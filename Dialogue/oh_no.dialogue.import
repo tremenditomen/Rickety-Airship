@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://c58xisbixwext"
+path="res://.godot/imported/oh_no.dialogue-1fd8fa52621177d4a63347932cf09919.tres"
+
+[deps]
+
+source_file="res://Dialogue/oh_no.dialogue"
+dest_files=["res://.godot/imported/oh_no.dialogue-1fd8fa52621177d4a63347932cf09919.tres"]
+
+[params]
+
+defaults=true
