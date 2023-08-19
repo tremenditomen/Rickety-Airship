@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3fcqrxihoekf"
-path="res://.godot/imported/Pirate3Walk.png-f121e563739c8bfcb3bc29d6186b75f9.ctex"
+uid="uid://c0nniww1xhy0c"
+path="res://.godot/imported/Character.png-01af7b271bafe7915bf0f3da413fb281.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Pirate3Walk.png"
-dest_files=["res://.godot/imported/Pirate3Walk.png-f121e563739c8bfcb3bc29d6186b75f9.ctex"]
+source_file="res://Player/Character.png"
+dest_files=["res://.godot/imported/Character.png-01af7b271bafe7915bf0f3da413fb281.ctex"]
 
 [params]
 
