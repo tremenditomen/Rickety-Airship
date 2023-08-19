@@ -10,7 +10,7 @@ func _ready():
 func fullaltitude():
 	var sb = StyleBoxFlat.new()
 	add_theme_stylebox_override("fill",sb)
-	sb.bg_color = Color("07d104")
+	sb.bg_color = Color("0262e0")
 func midaltitude():
 	var sb = StyleBoxFlat.new()
 	add_theme_stylebox_override("fill", sb)
