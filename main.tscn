@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cr2aututo0bmr" path="res://player.tscn" id="2_07i2l"]
 [ext_resource type="PackedScene" uid="uid://dll4gor5pu2k2" path="res://actionable.tscn" id="2_glsbu"]
 [ext_resource type="Resource" uid="uid://c58xisbixwext" path="res://Dialogue/oh_no.dialogue" id="3_k40lw"]
-[ext_resource type="PackedScene" path="res://gauges/altitude.tscn" id="4_arhnd"]
+[ext_resource type="PackedScene" uid="uid://egm08jh7yb1i" path="res://gauges/altitude.tscn" id="4_arhnd"]
 [ext_resource type="PackedScene" uid="uid://dyh6nduy3do41" path="res://gauges/Health.tscn" id="5_b1rv6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gfjv"]

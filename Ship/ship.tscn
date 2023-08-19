@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=26 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://b0kb2ifgjw3v5" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="Texture2D" uid="uid://65i3aeyaas3y" path="res://Ship/Propeller.png" id="2_qwa0p"]
 [ext_resource type="Texture2D" uid="uid://bfgsd5cq8xkjg" path="res://Ship/AirShip Body.png" id="3_hknwb"]
 [ext_resource type="Texture2D" uid="uid://cx1jiy0rdp1fl" path="res://Ship/AirShip Body Internal.png" id="4_8p31c"]
 [ext_resource type="Texture2D" uid="uid://ciwmw2t8gjlgi" path="res://Ship/AirShip Ropes Defaul.png" id="5_18yad"]
+[ext_resource type="Texture2D" uid="uid://ca6f0fyiqql3t" path="res://Ship/Fire/Fire Sprite.png" id="6_46jml"]
 
 [sub_resource type="GDScript" id="GDScript_m8yd1"]
 script/source = "extends Node2D
@@ -13,16 +14,89 @@ script/source = "extends Node2D
 var airship_speed = 15
 
 @onready var propeller = get_node(\"./Balloon/PropellerSprite\")
+@onready var fire = $Fire/FireSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	propeller.play(\"default\", airship_speed)
+	fire.play(\"burning\")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 "
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rt2s"]
+atlas = ExtResource("6_46jml")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2ffw"]
+atlas = ExtResource("6_46jml")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p8ua"]
+atlas = ExtResource("6_46jml")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djdy4"]
+atlas = ExtResource("6_46jml")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjext"]
+atlas = ExtResource("6_46jml")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dya0j"]
+atlas = ExtResource("6_46jml")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vwkb"]
+atlas = ExtResource("6_46jml")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uulk"]
+atlas = ExtResource("6_46jml")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_finm3"]
+atlas = ExtResource("6_46jml")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oeeam"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rt2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2ffw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p8ua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djdy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjext")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dya0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vwkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uulk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_finm3")
+}],
+"loop": true,
+"name": &"burning",
+"speed": 20.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_evm83"]
 animations = [{
@@ -103,6 +177,14 @@ animations = [{
 
 [node name="Ship" type="Node2D"]
 script = SubResource("GDScript_m8yd1")
+
+[node name="Fire" type="Node2D" parent="."]
+
+[node name="FireSprite" type="AnimatedSprite2D" parent="Fire"]
+position = Vector2(-7, 43.2092)
+scale = Vector2(0.109375, 0.11101)
+sprite_frames = SubResource("SpriteFrames_oeeam")
+animation = &"burning"
 
 [node name="Balloon" type="Node2D" parent="."]
 
