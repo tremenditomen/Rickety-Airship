@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=15 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://b0kb2ifgjw3v5" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="Texture2D" uid="uid://65i3aeyaas3y" path="res://Ship/Propeller.png" id="2_qwa0p"]
 [ext_resource type="Texture2D" uid="uid://bfgsd5cq8xkjg" path="res://AirShip Body.png" id="3_i62er"]
 [ext_resource type="Texture2D" uid="uid://cx1jiy0rdp1fl" path="res://AirShip Body Internal.png" id="4_t424m"]
+[ext_resource type="Texture2D" path="res://Ship/AirShip Ropes Defaul.png" id="5_18yad"]
 
 [sub_resource type="GDScript" id="GDScript_m8yd1"]
 script/source = "extends Node2D
@@ -15,7 +16,6 @@ var airship_speed = 15
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(\"Propeller: \", propeller)
 	propeller.play(\"default\", airship_speed)
 
 
@@ -90,6 +90,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_3a1vf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_18yad")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Ship" type="Node2D"]
 script = SubResource("GDScript_m8yd1")
 
@@ -110,3 +121,8 @@ animation = &"external"
 
 [node name="ShipCollision" type="CollisionPolygon2D" parent="ShipArea"]
 polygon = PackedVector2Array(-124, 57, 135, 57, 135, 52, 165, 52, 165, 55, 140, 58, 121, 88, 99, 106, 66, 112, 14, 121, -27, 114, -95, 112, -99, 119, -121, 116, -126, 71, -131, 71, -147, 52, -124, 52)
+
+[node name="Ropes" type="Node2D" parent="."]
+
+[node name="Default" type="AnimatedSprite2D" parent="Ropes"]
+sprite_frames = SubResource("SpriteFrames_3a1vf")
