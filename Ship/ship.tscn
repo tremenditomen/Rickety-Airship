@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://b0kb2ifgjw3v5" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="Texture2D" uid="uid://65i3aeyaas3y" path="res://Ship/Propeller.png" id="2_qwa0p"]
-[ext_resource type="Texture2D" uid="uid://bfgsd5cq8xkjg" path="res://AirShip Body.png" id="3_i62er"]
-[ext_resource type="Texture2D" uid="uid://cx1jiy0rdp1fl" path="res://AirShip Body Internal.png" id="4_t424m"]
-[ext_resource type="Texture2D" path="res://Ship/AirShip Ropes Defaul.png" id="5_18yad"]
+[ext_resource type="Texture2D" uid="uid://bfgsd5cq8xkjg" path="res://Ship/AirShip Body.png" id="3_hknwb"]
+[ext_resource type="Texture2D" uid="uid://cx1jiy0rdp1fl" path="res://Ship/AirShip Body Internal.png" id="4_8p31c"]
+[ext_resource type="Texture2D" uid="uid://ciwmw2t8gjlgi" path="res://Ship/AirShip Ropes Defaul.png" id="5_18yad"]
 
 [sub_resource type="GDScript" id="GDScript_m8yd1"]
 script/source = "extends Node2D
@@ -75,7 +75,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_i62er")
+"texture": ExtResource("3_hknwb")
 }],
 "loop": true,
 "name": &"external",
@@ -83,7 +83,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_t424m")
+"texture": ExtResource("4_8p31c")
 }],
 "loop": true,
 "name": &"internal",
