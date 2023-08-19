@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3jyena2s280q"]
+[gd_scene load_steps=10 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Script" path="res://Ship/ship.gd" id="1_hcogo"]
-[ext_resource type="Texture2D" uid="uid://3f4axs808m4e" path="res://Ship/AirShip1.png" id="1_upi3h"]
+[ext_resource type="Texture2D" path="res://Ship/AirShip1.png" id="1_upi3h"]
 [ext_resource type="Script" path="res://Ship/ShipAnimation.gd" id="3_4l2ir"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtpm0"]
