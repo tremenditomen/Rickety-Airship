@@ -7,20 +7,20 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func fullhealth():
+func fullfuel():
 	var sb = StyleBoxFlat.new()
 	add_theme_stylebox_override("fill",sb)
 	sb.bg_color = Color("07d104")
 	sb.set_border_width_all(5)
 	sb.border_color = Color("000000")
-func midhealth():
+func midfuel():
 	var sb = StyleBoxFlat.new()
 	add_theme_stylebox_override("fill", sb)
 	sb.bg_color = Color("c6c61b")
 	sb.set_border_width_all(5)
 	sb.border_color = Color("000000")
 	
-func lowhealth():
+func lowfuel():
 	var sb = StyleBoxFlat.new()
 	add_theme_stylebox_override("fill", sb)
 	sb.bg_color = Color("c90000")
