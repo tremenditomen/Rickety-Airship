@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bawdwts77t4da"
-path="res://.godot/imported/AirShip6.png-8bab7448f496909eb352a50c9a9fbeda.ctex"
+uid="uid://3f4axs808m4e"
+path="res://.godot/imported/AirShip1.png-3637021451674ad455b97f68c999cf45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ship/AirShip6.png"
-dest_files=["res://.godot/imported/AirShip6.png-8bab7448f496909eb352a50c9a9fbeda.ctex"]
+source_file="res://Ship/AirShip1.png"
+dest_files=["res://.godot/imported/AirShip1.png-3637021451674ad455b97f68c999cf45.ctex"]
 
 [params]
 
