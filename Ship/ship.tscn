@@ -129,5 +129,5 @@ polygon = PackedVector2Array(-124, 57, 135, 57, 135, 52, 165, 52, 165, 55, 140, 
 [node name="Ropes" type="Node2D" parent="."]
 script = ExtResource("5_bcblm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ropes"]
+[node name="Default Ropes" type="AnimatedSprite2D" parent="Ropes"]
 sprite_frames = SubResource("SpriteFrames_c6uyk")
