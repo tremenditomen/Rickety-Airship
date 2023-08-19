@@ -1,5 +1,6 @@
 extends Node2D
 
+
 var airship_speed = 25
 
 @onready var sprite = get_node("./ShipArea/ShipSprite")
