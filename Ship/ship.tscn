@@ -141,7 +141,7 @@ script = SubResource("GDScript_m8yd1")
 
 [node name="BalloonSprite" type="AnimatedSprite2D" parent="Balloon"]
 sprite_frames = SubResource("SpriteFrames_evm83")
-frame_progress = 0.36563
+frame_progress = 0.31888
 
 [node name="PropellerSprite" type="AnimatedSprite2D" parent="Balloon"]
 sprite_frames = SubResource("SpriteFrames_hyudt")
@@ -162,7 +162,7 @@ script = ExtResource("5_bcblm")
 [node name="Rope1" type="AnimatedSprite2D" parent="Ropes"]
 sprite_frames = SubResource("SpriteFrames_3a1vf")
 animation = &"stressed"
-frame_progress = 0.389996
+frame_progress = 0.343245
 
 [node name="RopesTimer" type="Timer" parent="Ropes"]
 wait_time = 5.0
