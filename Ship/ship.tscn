@@ -54,7 +54,7 @@ animations = [{
 [node name="Ship" type="Node2D"]
 script = ExtResource("1_hcogo")
 
-[node name="ShipArea" type="Area2D" parent="."]
+[node name="ShipArea" type="StaticBody2D" parent="."]
 
 [node name="ShipSprite" type="AnimatedSprite2D" parent="ShipArea"]
 sprite_frames = SubResource("SpriteFrames_tkvf0")
