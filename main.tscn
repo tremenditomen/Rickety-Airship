@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://djbemkhmv61i6"]
+[gd_scene load_steps=3 format=3 uid="uid://cwvxg0ru0gfhx"]
 
-[ext_resource type="PackedScene" path="res://Ship/ship.tscn" id="1_vo20a"]
+[ext_resource type="PackedScene" uid="uid://dmxr2tupdfjbp" path="res://Ship/ship.tscn" id="1_vo20a"]
+[ext_resource type="PackedScene" uid="uid://cr2aututo0bmr" path="res://player.tscn" id="2_07i2l"]
 
 [node name="main" type="Node2D"]
 
@@ -10,3 +11,7 @@ scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="Player" parent="." instance=ExtResource("2_07i2l")]
+position = Vector2(631, 415)
+scale = Vector2(1, 1)
