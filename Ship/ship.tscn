@@ -11,11 +11,12 @@ script/source = "extends Node2D
 
 var airship_speed = 15
 
-@onready var sprite = get_node(\"./ShipArea/ShipSprite\")
+@onready var propeller = get_node(\"./Balloon/PropellerSprite\")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	sprite.play(\"external\", airship_speed)
+	print(\"Propeller: \", propeller)
+	propeller.play(\"default\", airship_speed)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -97,9 +98,9 @@ script = SubResource("GDScript_m8yd1")
 [node name="BalloonSprite" type="AnimatedSprite2D" parent="Balloon"]
 sprite_frames = SubResource("SpriteFrames_evm83")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Balloon"]
+[node name="PropellerSprite" type="AnimatedSprite2D" parent="Balloon"]
 sprite_frames = SubResource("SpriteFrames_hyudt")
-frame_progress = 0.444184
+frame_progress = 0.0963933
 
 [node name="ShipArea" type="StaticBody2D" parent="."]
 
