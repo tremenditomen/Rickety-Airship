@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfgsd5cq8xkjg"
-path="res://.godot/imported/AirShip Body.png-1ad80cb316b931c24b87ec071da69fe6.ctex"
+path="res://.godot/imported/AirShip Body.png-e0caa1d0845b96b32b755f6d397f4615.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AirShip Body.png"
-dest_files=["res://.godot/imported/AirShip Body.png-1ad80cb316b931c24b87ec071da69fe6.ctex"]
+source_file="res://Ship/AirShip Body.png"
+dest_files=["res://.godot/imported/AirShip Body.png-e0caa1d0845b96b32b755f6d397f4615.ctex"]
 
 [params]
 
