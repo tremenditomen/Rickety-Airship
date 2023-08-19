@@ -1,8 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmxr2tupdfjbp"]
+[gd_scene load_steps=9 format=3 uid="uid://dys2j1umv5yu4"]
 
-[ext_resource type="Script" path="res://Ship/ship.gd" id="1_hcogo"]
 [ext_resource type="Texture2D" uid="uid://3f4axs808m4e" path="res://Ship/AirShip1.png" id="1_upi3h"]
-[ext_resource type="Script" path="res://Ship/ShipAnimation.gd" id="3_4l2ir"]
+
+[sub_resource type="GDScript" id="GDScript_m8yd1"]
+script/source = "extends Node2D
+
+
+var airship_speed = 15
+
+@onready var sprite = get_node(\"./ShipArea/ShipSprite\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	sprite.play(\"external\", airship_speed)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtpm0"]
 atlas = ExtResource("1_upi3h")
@@ -40,7 +56,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"external",
-"speed": 25.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -52,14 +68,14 @@ animations = [{
 }]
 
 [node name="Ship" type="Node2D"]
-script = ExtResource("1_hcogo")
+script = SubResource("GDScript_m8yd1")
 
-[node name="ShipArea" type="Area2D" parent="."]
+[node name="ShipArea" type="StaticBody2D" parent="."]
 
 [node name="ShipSprite" type="AnimatedSprite2D" parent="ShipArea"]
 sprite_frames = SubResource("SpriteFrames_tkvf0")
 animation = &"external"
-script = ExtResource("3_4l2ir")
+frame_progress = 0.508949
 
 [node name="ShipCollision" type="CollisionPolygon2D" parent="ShipArea"]
 polygon = PackedVector2Array(-124, 57, 135, 57, 135, 52, 165, 52, 165, 55, 140, 58, 121, 88, 99, 106, 66, 112, 14, 121, -27, 114, -95, 112, -99, 119, -121, 116, -126, 71, -131, 71, -147, 52, -124, 52)
