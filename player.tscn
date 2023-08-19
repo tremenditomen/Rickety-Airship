@@ -90,7 +90,7 @@ animations = [{
 size = Vector2(40, 50)
 
 [node name="Player" type="Area2D"]
-position = Vector2(480, 261)
+position = Vector2(552, 336)
 scale = Vector2(2, 2)
 script = ExtResource("1_ybybn")
 metadata/_edit_group_ = true
@@ -104,3 +104,5 @@ animation = &"walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -10)
 shape = SubResource("RectangleShape2D_68gvv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
