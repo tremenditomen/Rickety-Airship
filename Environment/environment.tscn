@@ -56,84 +56,88 @@ position = Vector2(968, 551)
 texture = ExtResource("3_yb0p7")
 
 [node name="ParallaxLayerWhiteClouds" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(1152, 0)
-
-[node name="Cloud1" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
-position = Vector2(870, 364)
-texture = ExtResource("4_hdiok")
 
 [node name="Cloud2" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
 position = Vector2(1049, 484)
 texture = ExtResource("5_xomcu")
 
-[node name="Cloud3" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
-position = Vector2(319, 179)
-texture = ExtResource("6_grfki")
-
 [node name="Cloud4" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
 position = Vector2(711, 414)
 texture = ExtResource("7_rtioo")
-
-[node name="Cloud5" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
-position = Vector2(781, 232)
-texture = ExtResource("8_1lo65")
 
 [node name="Cloud6" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
 position = Vector2(125, 287)
 texture = ExtResource("9_i0r2k")
 
-[node name="Cloud7" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
-position = Vector2(340, 23)
-texture = ExtResource("10_7img6")
-
 [node name="Cloud8" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
 position = Vector2(1061, 54)
 texture = ExtResource("11_nujdo")
-
-[node name="Cloud9" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
-position = Vector2(417, 334)
-texture = ExtResource("12_21csc")
 
 [node name="Cloud10" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
 position = Vector2(1103, 231)
 texture = ExtResource("13_wmnid")
 
-[node name="Cloud11" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
-position = Vector2(858, 123)
-texture = ExtResource("14_kf6ev")
-
 [node name="Cloud12" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
 position = Vector2(207, 427)
 texture = ExtResource("15_741ku")
-
-[node name="Cloud13" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
-position = Vector2(938, 201)
-texture = ExtResource("16_yos50")
 
 [node name="Cloud14" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
 position = Vector2(703, 46)
 texture = ExtResource("17_dj01i")
 
-[node name="Cloud15" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
-position = Vector2(58, 172)
-texture = ExtResource("18_riisp")
-
 [node name="Cloud16" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
 position = Vector2(1055, 287)
 texture = ExtResource("19_o221p")
-
-[node name="Cloud17" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
-position = Vector2(505, 461)
-texture = ExtResource("20_ne0rt")
 
 [node name="Cloud18" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
 position = Vector2(135, 61)
 texture = ExtResource("21_fgtyi")
 
-[node name="Cloud19" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
-position = Vector2(485, 108)
-texture = ExtResource("22_qkvim")
-
 [node name="Cloud20" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
 position = Vector2(624, 293)
 texture = ExtResource("23_3h4eq")
+
+[node name="ParallaxLayerWhiteClouds2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Cloud1" type="Sprite2D" parent="ParallaxLayerWhiteClouds2"]
+position = Vector2(870, 364)
+texture = ExtResource("4_hdiok")
+
+[node name="Cloud3" type="Sprite2D" parent="ParallaxLayerWhiteClouds2"]
+position = Vector2(319, 179)
+texture = ExtResource("6_grfki")
+
+[node name="Cloud5" type="Sprite2D" parent="ParallaxLayerWhiteClouds2"]
+position = Vector2(781, 232)
+texture = ExtResource("8_1lo65")
+
+[node name="Cloud7" type="Sprite2D" parent="ParallaxLayerWhiteClouds2"]
+position = Vector2(340, 23)
+texture = ExtResource("10_7img6")
+
+[node name="Cloud9" type="Sprite2D" parent="ParallaxLayerWhiteClouds2"]
+position = Vector2(417, 334)
+texture = ExtResource("12_21csc")
+
+[node name="Cloud11" type="Sprite2D" parent="ParallaxLayerWhiteClouds2"]
+position = Vector2(858, 123)
+texture = ExtResource("14_kf6ev")
+
+[node name="Cloud13" type="Sprite2D" parent="ParallaxLayerWhiteClouds2"]
+position = Vector2(938, 201)
+texture = ExtResource("16_yos50")
+
+[node name="Cloud15" type="Sprite2D" parent="ParallaxLayerWhiteClouds2"]
+position = Vector2(58, 172)
+texture = ExtResource("18_riisp")
+
+[node name="Cloud17" type="Sprite2D" parent="ParallaxLayerWhiteClouds2"]
+position = Vector2(505, 461)
+texture = ExtResource("20_ne0rt")
+
+[node name="Cloud19" type="Sprite2D" parent="ParallaxLayerWhiteClouds2"]
+position = Vector2(485, 108)
+texture = ExtResource("22_qkvim")
