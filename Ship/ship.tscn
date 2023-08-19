@@ -75,7 +75,7 @@ script = SubResource("GDScript_m8yd1")
 [node name="ShipSprite" type="AnimatedSprite2D" parent="ShipArea"]
 sprite_frames = SubResource("SpriteFrames_tkvf0")
 animation = &"external"
-frame_progress = 0.937518
+frame_progress = 0.508949
 
 [node name="ShipCollision" type="CollisionPolygon2D" parent="ShipArea"]
 polygon = PackedVector2Array(-124, 57, 135, 57, 135, 52, 165, 52, 165, 55, 140, 58, 121, 88, 99, 106, 66, 112, 14, 121, -27, 114, -95, 112, -99, 119, -121, 116, -126, 71, -131, 71, -147, 52, -124, 52)
