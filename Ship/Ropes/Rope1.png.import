@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c560pt1asafdt"
-path="res://.godot/imported/Propeller.png-25be7c2ce9eb1613fa9a513b2fe6e02f.ctex"
+uid="uid://m4nscndh57yw"
+path="res://.godot/imported/Rope1.png-f55ba10174206721460985bbcf88014a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ship/Propeller.png"
-dest_files=["res://.godot/imported/Propeller.png-25be7c2ce9eb1613fa9a513b2fe6e02f.ctex"]
+source_file="res://Ship/Ropes/Rope1.png"
+dest_files=["res://.godot/imported/Rope1.png-f55ba10174206721460985bbcf88014a.ctex"]
 
 [params]
 

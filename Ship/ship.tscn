@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=20 format=3 uid="uid://dys2j1umv5yu4"]
 
-[ext_resource type="Texture2D" uid="uid://b0kb2ifgjw3v5" path="res://Ship/Balloon.png" id="1_fodv7"]
-[ext_resource type="Texture2D" uid="uid://65i3aeyaas3y" path="res://Ship/Propeller.png" id="2_qwa0p"]
+[ext_resource type="Texture2D" uid="uid://cypxaywnxhoj4" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="Texture2D" uid="uid://bfgsd5cq8xkjg" path="res://Ship/AirShip Body.png" id="3_hknwb"]
 [ext_resource type="Texture2D" uid="uid://cx1jiy0rdp1fl" path="res://Ship/AirShip Body Internal.png" id="4_8p31c"]
-[ext_resource type="Texture2D" uid="uid://ciwmw2t8gjlgi" path="res://Ship/AirShip Ropes Defaul.png" id="5_18yad"]
+[ext_resource type="Script" path="res://Ship/Ropes.gd" id="5_bcblm"]
+[ext_resource type="Texture2D" uid="uid://m4nscndh57yw" path="res://Ship/Ropes/Rope1.png" id="6_86hkc"]
 
 [sub_resource type="GDScript" id="GDScript_m8yd1"]
 script/source = "extends Node2D
@@ -35,20 +35,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_31037"]
+load_path = "res://.godot/imported/Propeller.png-25be7c2ce9eb1613fa9a513b2fe6e02f.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pl20g"]
-atlas = ExtResource("2_qwa0p")
+atlas = SubResource("CompressedTexture2D_31037")
 region = Rect2(0, 0, 585, 390)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x0y5h"]
-atlas = ExtResource("2_qwa0p")
+atlas = SubResource("CompressedTexture2D_31037")
 region = Rect2(585, 0, 585, 390)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q78b8"]
-atlas = ExtResource("2_qwa0p")
+atlas = SubResource("CompressedTexture2D_31037")
 region = Rect2(0, 390, 585, 390)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aw4xo"]
-atlas = ExtResource("2_qwa0p")
+atlas = SubResource("CompressedTexture2D_31037")
 region = Rect2(585, 390, 585, 390)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hyudt"]
@@ -90,14 +93,44 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mahbs"]
+atlas = ExtResource("6_86hkc")
+region = Rect2(0, 0, 585, 390)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3jcf"]
+atlas = ExtResource("6_86hkc")
+region = Rect2(585, 0, 585, 390)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf6k6"]
+atlas = ExtResource("6_86hkc")
+region = Rect2(0, 390, 585, 390)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40vxu"]
+atlas = ExtResource("6_86hkc")
+region = Rect2(585, 390, 585, 390)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_3a1vf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_18yad")
+"texture": SubResource("AtlasTexture_mahbs")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3jcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sf6k6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40vxu")
+}],
+"loop": true,
+"name": &"stressed",
 "speed": 5.0
 }]
 
@@ -108,6 +141,7 @@ script = SubResource("GDScript_m8yd1")
 
 [node name="BalloonSprite" type="AnimatedSprite2D" parent="Balloon"]
 sprite_frames = SubResource("SpriteFrames_evm83")
+frame_progress = 0.36563
 
 [node name="PropellerSprite" type="AnimatedSprite2D" parent="Balloon"]
 sprite_frames = SubResource("SpriteFrames_hyudt")
@@ -123,6 +157,12 @@ animation = &"external"
 polygon = PackedVector2Array(-124, 57, 135, 57, 135, 52, 165, 52, 165, 55, 140, 58, 121, 88, 99, 106, 66, 112, 14, 121, -27, 114, -95, 112, -99, 119, -121, 116, -126, 71, -131, 71, -147, 52, -124, 52)
 
 [node name="Ropes" type="Node2D" parent="."]
+script = ExtResource("5_bcblm")
 
-[node name="Default" type="AnimatedSprite2D" parent="Ropes"]
+[node name="Rope1" type="AnimatedSprite2D" parent="Ropes"]
 sprite_frames = SubResource("SpriteFrames_3a1vf")
+animation = &"stressed"
+frame_progress = 0.389996
+
+[node name="RopesTimer" type="Timer" parent="Ropes"]
+wait_time = 5.0
