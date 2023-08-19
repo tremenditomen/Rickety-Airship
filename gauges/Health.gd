@@ -3,11 +3,13 @@ const MAX_HEALTH = 10
 var health = MAX_HEALTH
 
 func _ready() -> void:
+	print("hello")
 	set_health_label ()
-	$Health
+	$HealthBar
 	set_health_bar ()
 
 func set_health_bar () -> void:
+	pass
 	
 func set_health_label() -> void:
 	$HealthLabel.text = "Health: %s" % health
