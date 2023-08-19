@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbs34vuvkiv7k"]
+
+[ext_resource type="Texture2D" uid="uid://bawdwts77t4da" path="res://Ship/AirShip6.png" id="1_h6cw5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rsrb"]
+atlas = ExtResource("1_h6cw5")
+region = Rect2(0, 0, 400, 267)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbyqj"]
+atlas = ExtResource("1_h6cw5")
+region = Rect2(0, 267, 400, 267)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tkvf0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rsrb")
+}],
+"loop": true,
+"name": &"external",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbyqj")
+}],
+"loop": true,
+"name": &"internal",
+"speed": 5.0
+}]
+
+[node name="main" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_tkvf0")
+animation = &"external"
