@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cr2aututo0bmr"]
+[gd_scene load_steps=16 format=3 uid="uid://cr2aututo0bmr"]
 
 [ext_resource type="Texture2D" uid="uid://c0nniww1xhy0c" path="res://Player/Character.png" id="2_4f2xu"]
 
@@ -14,6 +14,7 @@ const JUMP_VELOCITY = -400.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var actionable_finder = $\"Direction/Actionable Finder\"
 
 
 func _physics_process(delta):
@@ -37,7 +38,7 @@ func handle_jump():
 	else:
 		if Input.is_action_just_released(\"ui_accept\") and velocity.y < JUMP_VELOCITY / 2:
 			velocity.y = JUMP_VELOCITY / 2
-			
+				
 func apply_friction(direction, delta):
 	if direction == 0:
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
@@ -143,6 +144,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxtv3"]
 size = Vector2(29.5, 50)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2a3te"]
+radius = 17.0074
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-40, -30)
 scale = Vector2(2, 2)
@@ -161,3 +165,13 @@ frame_progress = 0.365906
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.25, -11)
 shape = SubResource("RectangleShape2D_cxtv3")
+
+[node name="Direction" type="Marker2D" parent="."]
+
+[node name="Actionable Finder" type="Area2D" parent="Direction"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/Actionable Finder"]
+position = Vector2(-4.5, 17.5)
+shape = SubResource("CircleShape2D_2a3te")

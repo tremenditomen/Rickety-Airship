@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://djbemkhmv61i6"]
+[gd_scene load_steps=9 format=3 uid="uid://djbemkhmv61i6"]
 
 [ext_resource type="PackedScene" uid="uid://bhngqxprxmgn8" path="res://Environment/environment.tscn" id="1_hdisa"]
 [ext_resource type="PackedScene" uid="uid://dys2j1umv5yu4" path="res://Ship/ship.tscn" id="1_vo20a"]
-[ext_resource type="PackedScene" path="res://player.tscn" id="2_07i2l"]
+[ext_resource type="PackedScene" uid="uid://cr2aututo0bmr" path="res://player.tscn" id="2_07i2l"]
+[ext_resource type="PackedScene" uid="uid://dll4gor5pu2k2" path="res://actionable.tscn" id="2_glsbu"]
+[ext_resource type="Resource" uid="uid://c58xisbixwext" path="res://Dialogue/oh_no.dialogue" id="3_k40lw"]
+[ext_resource type="Script" path="res://CollisionFront.gd" id="4_c8msm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_423hg"]
+size = Vector2(427, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gapnx"]
+size = Vector2(329, 78)
 
 [node name="main" type="Node2D"]
 
@@ -11,6 +20,33 @@ scroll_offset = Vector2(40, 0)
 scroll_base_offset = Vector2(40, 0)
 scroll_ignore_camera_zoom = true
 
+[node name="Actionable" parent="Environment" instance=ExtResource("2_glsbu")]
+collision_layer = 0
+collision_mask = 16
+dialogue_resource = ExtResource("3_k40lw")
+
+[node name="CollisionFront" type="CollisionShape2D" parent="Environment/Actionable"]
+position = Vector2(1048.5, 512)
+shape = SubResource("RectangleShape2D_423hg")
+script = ExtResource("4_c8msm")
+
+[node name="CollisionBack" type="CollisionShape2D" parent="Environment/Actionable"]
+position = Vector2(165.5, 524)
+shape = SubResource("RectangleShape2D_gapnx")
+
+[node name="Actionable2" parent="Environment" instance=ExtResource("2_glsbu")]
+collision_layer = 0
+collision_mask = 16
+dialogue_resource = ExtResource("3_k40lw")
+
+[node name="CollisionFront" type="CollisionShape2D" parent="Environment/Actionable2"]
+position = Vector2(1048.5, 512)
+shape = SubResource("RectangleShape2D_423hg")
+
+[node name="CollisionBack" type="CollisionShape2D" parent="Environment/Actionable2"]
+position = Vector2(165.5, 524)
+shape = SubResource("RectangleShape2D_gapnx")
+
 [node name="Ship" parent="." instance=ExtResource("1_vo20a")]
 position = Vector2(584, 312)
 scale = Vector2(2, 2)
@@ -18,3 +54,5 @@ scale = Vector2(2, 2)
 [node name="Player" parent="." instance=ExtResource("2_07i2l")]
 position = Vector2(649, 281)
 scale = Vector2(1, 1)
+collision_layer = 17
+collision_mask = 17
