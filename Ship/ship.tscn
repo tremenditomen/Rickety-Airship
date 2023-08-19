@@ -1,6 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=13 format=3 uid="uid://dys2j1umv5yu4"]
 
-[ext_resource type="Texture2D" uid="uid://3f4axs808m4e" path="res://Ship/AirShip1.png" id="1_upi3h"]
+[ext_resource type="Texture2D" uid="uid://b0kb2ifgjw3v5" path="res://Ship/Balloon.png" id="1_fodv7"]
+[ext_resource type="Texture2D" uid="uid://65i3aeyaas3y" path="res://Ship/Propeller.png" id="2_qwa0p"]
+[ext_resource type="Texture2D" uid="uid://bfgsd5cq8xkjg" path="res://AirShip Body.png" id="3_i62er"]
+[ext_resource type="Texture2D" uid="uid://cx1jiy0rdp1fl" path="res://AirShip Body Internal.png" id="4_t424m"]
 
 [sub_resource type="GDScript" id="GDScript_m8yd1"]
 script/source = "extends Node2D
@@ -20,39 +23,58 @@ func _process(delta):
 	pass
 "
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dtpm0"]
-atlas = ExtResource("1_upi3h")
+[sub_resource type="SpriteFrames" id="SpriteFrames_evm83"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fodv7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl20g"]
+atlas = ExtResource("2_qwa0p")
 region = Rect2(0, 0, 585, 390)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_swsv3"]
-atlas = ExtResource("1_upi3h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0y5h"]
+atlas = ExtResource("2_qwa0p")
 region = Rect2(585, 0, 585, 390)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4rops"]
-atlas = ExtResource("1_upi3h")
-region = Rect2(0, 780, 585, 390)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r1g00"]
-atlas = ExtResource("1_upi3h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q78b8"]
+atlas = ExtResource("2_qwa0p")
 region = Rect2(0, 390, 585, 390)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tbyqj"]
-region = Rect2(0, 267, 400, 267)
+[sub_resource type="AtlasTexture" id="AtlasTexture_aw4xo"]
+atlas = ExtResource("2_qwa0p")
+region = Rect2(585, 390, 585, 390)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hyudt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl20g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0y5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q78b8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aw4xo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tkvf0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dtpm0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_swsv3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4rops")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r1g00")
+"texture": ExtResource("3_i62er")
 }],
 "loop": true,
 "name": &"external",
@@ -60,7 +82,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tbyqj")
+"texture": ExtResource("4_t424m")
 }],
 "loop": true,
 "name": &"internal",
@@ -70,12 +92,20 @@ animations = [{
 [node name="Ship" type="Node2D"]
 script = SubResource("GDScript_m8yd1")
 
+[node name="Balloon" type="Node2D" parent="."]
+
+[node name="BalloonSprite" type="AnimatedSprite2D" parent="Balloon"]
+sprite_frames = SubResource("SpriteFrames_evm83")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Balloon"]
+sprite_frames = SubResource("SpriteFrames_hyudt")
+frame_progress = 0.444184
+
 [node name="ShipArea" type="StaticBody2D" parent="."]
 
 [node name="ShipSprite" type="AnimatedSprite2D" parent="ShipArea"]
 sprite_frames = SubResource("SpriteFrames_tkvf0")
 animation = &"external"
-frame_progress = 0.508949
 
 [node name="ShipCollision" type="CollisionPolygon2D" parent="ShipArea"]
 polygon = PackedVector2Array(-124, 57, 135, 57, 135, 52, 165, 52, 165, 55, 140, 58, 121, 88, 99, 106, 66, 112, 14, 121, -27, 114, -95, 112, -99, 119, -121, 116, -126, 71, -131, 71, -147, 52, -124, 52)
