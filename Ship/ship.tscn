@@ -1,10 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=16 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://cypxaywnxhoj4" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="Texture2D" uid="uid://bfgsd5cq8xkjg" path="res://Ship/AirShip Body.png" id="3_hknwb"]
 [ext_resource type="Texture2D" uid="uid://cx1jiy0rdp1fl" path="res://Ship/AirShip Body Internal.png" id="4_8p31c"]
 [ext_resource type="Script" path="res://Ship/Ropes.gd" id="5_bcblm"]
-[ext_resource type="Texture2D" uid="uid://m4nscndh57yw" path="res://Ship/Ropes/Rope1.png" id="6_86hkc"]
+[ext_resource type="Texture2D" uid="uid://bfyeny5v05ugw" path="res://Ship/Ropes/Ropes Default.png" id="5_jaxv7"]
 
 [sub_resource type="GDScript" id="GDScript_m8yd1"]
 script/source = "extends Node2D
@@ -93,44 +93,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mahbs"]
-atlas = ExtResource("6_86hkc")
-region = Rect2(0, 0, 585, 390)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3jcf"]
-atlas = ExtResource("6_86hkc")
-region = Rect2(585, 0, 585, 390)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sf6k6"]
-atlas = ExtResource("6_86hkc")
-region = Rect2(0, 390, 585, 390)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_40vxu"]
-atlas = ExtResource("6_86hkc")
-region = Rect2(585, 390, 585, 390)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3a1vf"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_c6uyk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mahbs")
+"texture": ExtResource("5_jaxv7")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x3jcf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sf6k6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_40vxu")
-}],
-"loop": true,
-"name": &"stressed",
 "speed": 5.0
 }]
 
@@ -159,10 +129,5 @@ polygon = PackedVector2Array(-124, 57, 135, 57, 135, 52, 165, 52, 165, 55, 140, 
 [node name="Ropes" type="Node2D" parent="."]
 script = ExtResource("5_bcblm")
 
-[node name="Rope1" type="AnimatedSprite2D" parent="Ropes"]
-sprite_frames = SubResource("SpriteFrames_3a1vf")
-animation = &"stressed"
-frame_progress = 0.343245
-
-[node name="RopesTimer" type="Timer" parent="Ropes"]
-wait_time = 5.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ropes"]
+sprite_frames = SubResource("SpriteFrames_c6uyk")
