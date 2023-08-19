@@ -1,6 +1,7 @@
 extends Node2D
 const MAX_FUEL = 10
-var fuel = MAX_FUEL
+var fuel = 0
+
 
 
 @onready var node = get_node("FuelBar")
@@ -14,16 +15,16 @@ func set_fuel_bar () -> void:
 	$FuelBar.value = fuel
 	
 func set_fuel_label() -> void:
-	$FuelLabel.text = "Fuel: %s" % fuel
+	$FuelLabel.text = "Distance: %s" % fuel
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		damage()
-		
+#func _input(event: InputEvent) -> void:
+#	if event.is_action_pressed("ui_accept"):
+#		damage()
+#		
 
 func damage():
 	#$Altitude
-	fuel -=1
+	fuel +=1
 	if fuel<0 || fuel == 10:
 		node.fullfuel()
 		fuel = MAX_FUEL
@@ -34,3 +35,19 @@ func damage():
 
 	set_fuel_label()
 	set_fuel_bar()
+
+
+func _on_timer_timeout():
+	fuel +=1
+	if fuel == 7:
+		node.fullfuel()
+
+	elif fuel<6 && fuel > 3:
+		node.midfuel()   
+	elif fuel<3:
+		node.lowfuel()
+	elif fuel > MAX_FUEL:
+		fuel = 0
+	set_fuel_label()
+	set_fuel_bar()
+
