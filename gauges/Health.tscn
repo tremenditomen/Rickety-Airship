@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://dyh6nduy3do41"]
+[gd_scene load_steps=2 format=3 uid="uid://dyh6nduy3do41"]
 
-[node name="main" type="Node2D"]
+[ext_resource type="Script" path="res://gauges/Health.gd" id="1_vps0b"]
+
+[node name="Health" type="Node2D"]
 position = Vector2(169, -513)
+script = ExtResource("1_vps0b")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = 88.0
