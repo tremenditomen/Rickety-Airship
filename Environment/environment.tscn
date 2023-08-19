@@ -1,0 +1,139 @@
+[gd_scene load_steps=25 format=3 uid="uid://bhngqxprxmgn8"]
+
+[ext_resource type="Script" path="res://Environment/ParallaxClouds.gd" id="1_0mf7d"]
+[ext_resource type="Texture2D" uid="uid://n16tp35y4xbj" path="res://Environment/Art/sky-blue.png" id="2_4rabh"]
+[ext_resource type="Texture2D" uid="uid://c0xhneatfg2q7" path="res://Environment/Art/Cloud.png" id="3_yb0p7"]
+[ext_resource type="Texture2D" uid="uid://cwtakfsmxbxed" path="res://Environment/Art/Cloud 1.png" id="4_hdiok"]
+[ext_resource type="Texture2D" uid="uid://tue0rht15y77" path="res://Environment/Art/Cloud 2.png" id="5_xomcu"]
+[ext_resource type="Texture2D" uid="uid://byui0amkxstj8" path="res://Environment/Art/Cloud 3.png" id="6_grfki"]
+[ext_resource type="Texture2D" uid="uid://c6ec02pplx1bu" path="res://Environment/Art/Cloud 4.png" id="7_rtioo"]
+[ext_resource type="Texture2D" uid="uid://br68bqrtty27u" path="res://Environment/Art/Cloud 5.png" id="8_1lo65"]
+[ext_resource type="Texture2D" uid="uid://d2tw8aqhpyj6t" path="res://Environment/Art/Cloud 6.png" id="9_i0r2k"]
+[ext_resource type="Texture2D" uid="uid://c7mencfuqypb8" path="res://Environment/Art/Cloud 7.png" id="10_7img6"]
+[ext_resource type="Texture2D" uid="uid://bx2t6mg43n0pp" path="res://Environment/Art/Cloud 8.png" id="11_nujdo"]
+[ext_resource type="Texture2D" uid="uid://dgjfnbi8qmcic" path="res://Environment/Art/Cloud 9.png" id="12_21csc"]
+[ext_resource type="Texture2D" uid="uid://cng1tfxnauua5" path="res://Environment/Art/Cloud 10.png" id="13_wmnid"]
+[ext_resource type="Texture2D" uid="uid://cl78yd4mmox87" path="res://Environment/Art/Cloud 11.png" id="14_kf6ev"]
+[ext_resource type="Texture2D" uid="uid://sgq875hbme8r" path="res://Environment/Art/Cloud 12.png" id="15_741ku"]
+[ext_resource type="Texture2D" uid="uid://b1oltpljv0pwf" path="res://Environment/Art/Cloud 13.png" id="16_yos50"]
+[ext_resource type="Texture2D" uid="uid://byncp8lvjenn0" path="res://Environment/Art/Cloud 14.png" id="17_dj01i"]
+[ext_resource type="Texture2D" uid="uid://6knwodde78q5" path="res://Environment/Art/Cloud 15.png" id="18_riisp"]
+[ext_resource type="Texture2D" uid="uid://cv488e2172abs" path="res://Environment/Art/Cloud 16.png" id="19_o221p"]
+[ext_resource type="Texture2D" uid="uid://c7qwr1jvm0l6c" path="res://Environment/Art/Cloud 17.png" id="20_ne0rt"]
+[ext_resource type="Texture2D" uid="uid://g7075m3c5g44" path="res://Environment/Art/Cloud 18.png" id="21_fgtyi"]
+[ext_resource type="Texture2D" uid="uid://0kxxmej8c4ib" path="res://Environment/Art/Cloud 19.png" id="22_qkvim"]
+[ext_resource type="Texture2D" uid="uid://p06vpyl2mi04" path="res://Environment/Art/Cloud 20.png" id="23_3h4eq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qshmi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4rabh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ParallaxBackgroundClouds" type="ParallaxBackground"]
+script = ExtResource("1_0mf7d")
+
+[node name="Sky" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.92, 1.62)
+sprite_frames = SubResource("SpriteFrames_qshmi")
+centered = false
+
+[node name="ParallaxLayerBlueClouds" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1552, 0)
+
+[node name="Cloud" type="Sprite2D" parent="ParallaxLayerBlueClouds"]
+position = Vector2(584, 551)
+texture = ExtResource("3_yb0p7")
+
+[node name="Cloud2" type="Sprite2D" parent="ParallaxLayerBlueClouds"]
+position = Vector2(968, 551)
+texture = ExtResource("3_yb0p7")
+
+[node name="ParallaxLayerWhiteClouds" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Cloud1" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(870, 364)
+texture = ExtResource("4_hdiok")
+
+[node name="Cloud2" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(1049, 484)
+texture = ExtResource("5_xomcu")
+
+[node name="Cloud3" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(319, 179)
+texture = ExtResource("6_grfki")
+
+[node name="Cloud4" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(711, 414)
+texture = ExtResource("7_rtioo")
+
+[node name="Cloud5" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(781, 232)
+texture = ExtResource("8_1lo65")
+
+[node name="Cloud6" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(125, 287)
+texture = ExtResource("9_i0r2k")
+
+[node name="Cloud7" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(340, 23)
+texture = ExtResource("10_7img6")
+
+[node name="Cloud8" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(1061, 54)
+texture = ExtResource("11_nujdo")
+
+[node name="Cloud9" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(417, 334)
+texture = ExtResource("12_21csc")
+
+[node name="Cloud10" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(1103, 231)
+texture = ExtResource("13_wmnid")
+
+[node name="Cloud11" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(858, 123)
+texture = ExtResource("14_kf6ev")
+
+[node name="Cloud12" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(207, 427)
+texture = ExtResource("15_741ku")
+
+[node name="Cloud13" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(938, 201)
+texture = ExtResource("16_yos50")
+
+[node name="Cloud14" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(703, 46)
+texture = ExtResource("17_dj01i")
+
+[node name="Cloud15" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(58, 172)
+texture = ExtResource("18_riisp")
+
+[node name="Cloud16" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(1055, 287)
+texture = ExtResource("19_o221p")
+
+[node name="Cloud17" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(505, 461)
+texture = ExtResource("20_ne0rt")
+
+[node name="Cloud18" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(135, 61)
+texture = ExtResource("21_fgtyi")
+
+[node name="Cloud19" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(485, 108)
+texture = ExtResource("22_qkvim")
+
+[node name="Cloud20" type="Sprite2D" parent="ParallaxLayerWhiteClouds"]
+position = Vector2(624, 293)
+texture = ExtResource("23_3h4eq")
