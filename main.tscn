@@ -6,9 +6,12 @@
 [node name="main" type="Node2D"]
 
 [node name="Ship" parent="." instance=ExtResource("1_vo20a")]
-
 position = Vector2(584, 312)
 scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="Player" parent="." instance=ExtResource("2_07i2l")]
+position = Vector2(631, 415)
+scale = Vector2(1, 1)
