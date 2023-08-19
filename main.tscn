@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2ubuvgodmrp8"]
+[gd_scene load_steps=10 format=3 uid="uid://b2ubuvgodmrp8"]
 
 [ext_resource type="PackedScene" uid="uid://bhngqxprxmgn8" path="res://Environment/environment.tscn" id="1_hdisa"]
 [ext_resource type="PackedScene" uid="uid://dys2j1umv5yu4" path="res://Ship/ship.tscn" id="1_vo20a"]
 [ext_resource type="PackedScene" uid="uid://cr2aututo0bmr" path="res://player.tscn" id="2_07i2l"]
 [ext_resource type="PackedScene" uid="uid://dll4gor5pu2k2" path="res://actionable.tscn" id="2_glsbu"]
 [ext_resource type="Resource" uid="uid://c58xisbixwext" path="res://Dialogue/oh_no.dialogue" id="3_k40lw"]
-[ext_resource type="PackedScene" uid="uid://egm08jh7yb1i" path="res://gauges/Altitude.tscn" id="4_arhnd"]
+[ext_resource type="PackedScene" uid="uid://egm08jh7yb1i" path="res://gauges/altitude.tscn" id="4_arhnd"]
 [ext_resource type="PackedScene" uid="uid://dyh6nduy3do41" path="res://gauges/Health.tscn" id="5_b1rv6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gfjv"]
