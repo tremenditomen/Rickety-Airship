@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=8 format=3 uid="uid://coyeryh86iyvt"]
 
 [ext_resource type="PackedScene" uid="uid://bhngqxprxmgn8" path="res://Environment/environment.tscn" id="1_hdisa"]
@@ -5,12 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://cr2aututo0bmr" path="res://player.tscn" id="2_07i2l"]
 [ext_resource type="PackedScene" uid="uid://dll4gor5pu2k2" path="res://actionable.tscn" id="2_glsbu"]
 [ext_resource type="Resource" uid="uid://c58xisbixwext" path="res://Dialogue/oh_no.dialogue" id="3_k40lw"]
+[ext_resource type="PackedScene" uid="uid://egm08jh7yb1i" path="res://gauges/altitude.tscn" id="4_arhnd"]
+[ext_resource type="PackedScene" uid="uid://dyh6nduy3do41" path="res://gauges/Health.tscn" id="5_b1rv6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gfjv"]
-size = Vector2(62.6, 7.4e+06)
+size = Vector2(62.6, 7.4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hnav"]
 size = Vector2(338, 78)
+
 
 [node name="main" type="Node2D"]
 
@@ -38,5 +42,16 @@ scale = Vector2(2, 2)
 [node name="Player" parent="." instance=ExtResource("2_07i2l")]
 position = Vector2(649, 281)
 scale = Vector2(1, 1)
+
 collision_layer = 17
 collision_mask = 17
+
+
+[node name="Altitude" parent="." instance=ExtResource("4_arhnd")]
+position = Vector2(0, 300)
+scale = Vector2(0.5, 0.5)
+
+[node name="Health" parent="." instance=ExtResource("5_b1rv6")]
+position = Vector2(254, 150)
+scale = Vector2(0.55, 0.55)
+
