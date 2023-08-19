@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3jyena2s280q"]
+
+[ext_resource type="Script" path="res://Ship/ship.gd" id="1_hcogo"]
+[ext_resource type="Texture2D" uid="uid://3f4axs808m4e" path="res://Ship/AirShip1.png" id="1_upi3h"]
+[ext_resource type="Script" path="res://Ship/ShipAnimation.gd" id="3_4l2ir"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtpm0"]
+atlas = ExtResource("1_upi3h")
+region = Rect2(0, 0, 585, 390)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swsv3"]
+atlas = ExtResource("1_upi3h")
+region = Rect2(585, 0, 585, 390)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rops"]
+atlas = ExtResource("1_upi3h")
+region = Rect2(0, 780, 585, 390)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1g00"]
+atlas = ExtResource("1_upi3h")
+region = Rect2(0, 390, 585, 390)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbyqj"]
+region = Rect2(0, 267, 400, 267)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tkvf0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtpm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swsv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rops")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1g00")
+}],
+"loop": true,
+"name": &"external",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbyqj")
+}],
+"loop": true,
+"name": &"internal",
+"speed": 5.0
+}]
+
+[node name="Ship" type="Node2D"]
+script = ExtResource("1_hcogo")
+
+[node name="ShipArea" type="Area2D" parent="."]
+
+[node name="ShipSprite" type="AnimatedSprite2D" parent="ShipArea"]
+sprite_frames = SubResource("SpriteFrames_tkvf0")
+animation = &"external"
+script = ExtResource("3_4l2ir")
+
+[node name="ShipCollision" type="CollisionPolygon2D" parent="ShipArea"]
+polygon = PackedVector2Array(-124, 57, 135, 57, 135, 52, 165, 52, 165, 55, 140, 58, 121, 88, 99, 106, 66, 112, 14, 121, -27, 114, -95, 112, -99, 119, -121, 116, -126, 71, -131, 71, -147, 52, -124, 52)

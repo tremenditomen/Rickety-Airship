@@ -1,42 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbs34vuvkiv7k"]
+[gd_scene load_steps=2 format=3 uid="uid://djbemkhmv61i6"]
 
-[ext_resource type="Texture2D" uid="uid://bawdwts77t4da" path="res://Ship/AirShip6.png" id="1_h6cw5"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3rsrb"]
-atlas = ExtResource("1_h6cw5")
-region = Rect2(0, 0, 400, 267)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tbyqj"]
-atlas = ExtResource("1_h6cw5")
-region = Rect2(0, 267, 400, 267)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tkvf0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3rsrb")
-}],
-"loop": true,
-"name": &"external",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tbyqj")
-}],
-"loop": true,
-"name": &"internal",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://c3jyena2s280q" path="res://Ship/ship.tscn" id="1_vo20a"]
 
 [node name="main" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
-position = Vector2(680, 320)
-sprite_frames = SubResource("SpriteFrames_tkvf0")
-animation = &"external"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(547, 379, 718, 388, 804, 370, 816, 357, 846, 349, 811, 400, 798, 401, 785, 442, 698, 443, 538, 418, 538, 402, 495, 396, 489, 328, 529, 330, 535, 379)
+[node name="Ship" parent="." instance=ExtResource("1_vo20a")]
+position = Vector2(602, 309)
