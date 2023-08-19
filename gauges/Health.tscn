@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyh6nduy3do41"]
+[gd_scene load_steps=4 format=3 uid="uid://dyh6nduy3do41"]
 
 [ext_resource type="Script" path="res://gauges/Health.gd" id="1_vps0b"]
+[ext_resource type="Script" path="res://gauges/HealthBar.gd" id="2_ohlbi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7441"]
+bg_color = Color(0.027451, 0.819608, 0.0156863, 1)
 
 [node name="Health" type="Node2D"]
 position = Vector2(169, -513)
@@ -11,8 +15,10 @@ offset_left = 88.0
 offset_top = 794.0
 offset_right = 739.0
 offset_bottom = 846.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_q7441")
 max_value = 10.0
 step = 1.0
+script = ExtResource("2_ohlbi")
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = 2.0
