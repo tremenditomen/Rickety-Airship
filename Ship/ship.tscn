@@ -493,6 +493,11 @@ text = "Hooray!
 You reached port safely! "
 script = ExtResource("11_i2nkt")
 
+[node name="RopeTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="timeout" from="Fire/FireTimer" to="Fire/SpriteActionable" method="_on_fire_timer_timeout"]
 [connection signal="timeout" from="AltitudeBar/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="FuelBar2/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="RopeTimer" to="RopesController" method="_on_rope_timer_timeout"]

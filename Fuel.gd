@@ -38,10 +38,12 @@ func set_Distance_bar () -> void:
 	#set_Distance_bar()
 
  
-#func _on_timer_timeout():
-	#distance +=2
-	#if distance == 7:
-		#node.fulldistance()
+
+func _on_timer_timeout():
+	distance +=2
+	if distance >= 7:
+		node.fulldistance()
+
 
 	#elif distance<6 && distance > 3:
 		#node.middistance()   

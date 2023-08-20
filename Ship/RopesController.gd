@@ -1,5 +1,6 @@
 extends Node2D
 var ropeKlass = load("res://Ship/RopeClass.gd")
+var rng = RandomNumberGenerator.new()
 
 var ropeDict = {
 	rope1 = ropeKlass.new(Vector2(175, 157), Vector2(208, 211)),
@@ -15,11 +16,18 @@ var ropeDict = {
 }
 
 func fasten_rope(ropeId):
-	ropeDict[ropeId].stress = 0
+	ropeDict[ropeId].set_stress(0)
 	
 func stress_rope(ropeId):
-	ropeDict[ropeId].stress += 1
+	ropeDict[ropeId].set_stress( ropeDict[ropeId].stress + 1 )
 
 func _ready():
 	for rope in ropeDict:
 		add_child(ropeDict[rope].line)
+
+
+func _on_rope_timer_timeout():
+	rng.randomize()
+	var rngRope = "rope%s"
+	var randomNum = rngRope  %rng.randi_range(1,10)
+	stress_rope(randomNum)
