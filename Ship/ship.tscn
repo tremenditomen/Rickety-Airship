@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=43 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://cypxaywnxhoj4" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="PackedScene" uid="uid://bx03qr2kqqmt8" path="res://sprite_actionable.tscn" id="1_iil3u"]
@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://ca6f0fyiqql3t" path="res://Ship/Fire/Fire Sprite.png" id="6_46jml"]
 [ext_resource type="Script" path="res://Ship/RopesController.gd" id="7_m8rgx"]
 [ext_resource type="Script" path="res://Ship/FireBar.gd" id="8_1uc35"]
+[ext_resource type="Script" path="res://Ship/RopeActionable.gd" id="8_yu1br"]
 [ext_resource type="Script" path="res://Ship/DistanceBar2.gd" id="9_j22cx"]
+[ext_resource type="Script" path="res://Ship/RightRopeActionable.gd" id="9_w575h"]
 [ext_resource type="Script" path="res://Ship/Complete.gd" id="10_wev4u"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="11_i2nkt"]
 
@@ -238,6 +240,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhtj6"]
+size = Vector2(102, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43o3y"]
+size = Vector2(110, 40)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsr1m"]
 bg_color = Color(0.184314, 0.521569, 0.972549, 1)
 border_width_left = 1
@@ -384,6 +392,22 @@ script = ExtResource("7_m8rgx")
 wait_time = 5.0
 autostart = true
 
+[node name="RopeActionable" type="Area2D" parent="RopesController"]
+collision_layer = 2
+script = ExtResource("8_yu1br")
+
+[node name="LeftRopesCollision" type="CollisionShape2D" parent="RopesController/RopeActionable"]
+position = Vector2(221, 174)
+shape = SubResource("RectangleShape2D_lhtj6")
+
+[node name="RightRopeActionable" type="Area2D" parent="RopesController"]
+collision_layer = 4
+script = ExtResource("9_w575h")
+
+[node name="RightRopesCollision" type="CollisionShape2D" parent="RopesController/RightRopeActionable"]
+position = Vector2(478, 168)
+shape = SubResource("RectangleShape2D_43o3y")
+
 [node name="AltitudeBar" type="ProgressBar" parent="."]
 offset_left = 26.0
 offset_top = 145.0
@@ -479,10 +503,10 @@ libraries = {
 
 [node name="-600" type="ColorRect" parent="DistanceBar2"]
 layout_mode = 0
-offset_left = -560.0
-offset_top = -162.0
-offset_right = 652.0
-offset_bottom = 513.0
+offset_left = -530.0
+offset_top = -151.0
+offset_right = 635.0
+offset_bottom = 506.0
 color = Color(0, 0, 0, 0)
 
 [node name="DialogueLabel" type="RichTextLabel" parent="DistanceBar2"]
