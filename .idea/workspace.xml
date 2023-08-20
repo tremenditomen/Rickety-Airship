@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="306bbe8a-b06f-4bf1-a406-eb0c3b51754d" name="Changes" comment="" />
+    <list default="true" id="306bbe8a-b06f-4bf1-a406-eb0c3b51754d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Fuel.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Fuel.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ship/RopeClass.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Ship/RopeClass.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ship/RopesController.gd" beforeDir="false" afterPath="$PROJECT_DIR$/Ship/RopesController.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ship/ship.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Ship/ship.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauges/Distance.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/gauges/Distance.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gauges/Fuel.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/gauges/Fuel.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/main.tscn" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,14 +27,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "ruby.rails.projectView.checked": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ruby.rails.projectView.checked&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -37,6 +45,7 @@
       <updated>1692478226344</updated>
       <workItem from="1692478227872" duration="1000" />
       <workItem from="1692478497714" duration="331000" />
+      <workItem from="1692557923067" duration="20000" />
     </task>
     <servers />
   </component>
