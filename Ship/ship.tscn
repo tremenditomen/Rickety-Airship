@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=32 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://cypxaywnxhoj4" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="PackedScene" uid="uid://bx03qr2kqqmt8" path="res://sprite_actionable.tscn" id="1_iil3u"]
@@ -259,6 +259,14 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ja76s"]
+bg_color = Color(0.788235, 0, 0, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+
 [node name="Ship" type="Node2D"]
 script = SubResource("GDScript_m8yd1")
 
@@ -373,8 +381,12 @@ theme_override_font_sizes/font_size = 12
 text = "Fuel"
 
 [node name="DistanceBar2" type="ProgressBar" parent="."]
-offset_right = 4.0
-offset_bottom = 27.0
+offset_left = 537.0
+offset_top = 145.0
+offset_right = 554.0
+offset_bottom = 323.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ja76s")
+step = 1.0
 
 [connection signal="timeout" from="Fire/FireTimer" to="Fire/SpriteActionable" method="_on_fire_timer_timeout"]
 [connection signal="timeout" from="AltitudeBar/Timer" to="." method="_on_timer_timeout"]
