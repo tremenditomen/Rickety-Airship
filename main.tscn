@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dll4gor5pu2k2" path="res://actionable.tscn" id="2_glsbu"]
 [ext_resource type="Resource" uid="uid://c58xisbixwext" path="res://Dialogue/oh_no.dialogue" id="3_k40lw"]
 [ext_resource type="PackedScene" uid="uid://egm08jh7yb1i" path="res://gauges/altitude.tscn" id="4_arhnd"]
-[ext_resource type="PackedScene" uid="uid://yjtsts1qsqmc" path="res://gauges/Distance.tscn" id="8_8hy48"]
-[ext_resource type="PackedScene" uid="uid://ccjlnpfdbth81" path="res://gauges/Fuel.tscn" id="8_81hun"]
+[ext_resource type="PackedScene" uid="uid://cpj60md7n6c53" path="res://gauges/Distance.tscn" id="8_8hy48"]
+[ext_resource type="PackedScene" uid="uid://dr3fsor4i32vc" path="res://gauges/Fuel.tscn" id="8_81hun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gfjv"]
 size = Vector2(62.6, 7.7e+06)
@@ -45,6 +45,7 @@ collision_layer = 17
 collision_mask = 17
 
 [node name="Altitude" parent="." instance=ExtResource("4_arhnd")]
+visible = false
 position = Vector2(-167, 112)
 
 [node name="Distance" parent="." instance=ExtResource("8_8hy48")]
