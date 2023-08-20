@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciwmw2t8gjlgi"
-path="res://.godot/imported/AirShip Ropes Defaul.png-42da5af59c1fdd0f811db0c85dd8127b.ctex"
+uid="uid://ca6f0fyiqql3t"
+path="res://.godot/imported/Fire Sprite.png-de662a97181997a09ef0eab6f726332d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ship/AirShip Ropes Defaul.png"
-dest_files=["res://.godot/imported/AirShip Ropes Defaul.png-42da5af59c1fdd0f811db0c85dd8127b.ctex"]
+source_file="res://Ship/Fire/Fire Sprite.png"
+dest_files=["res://.godot/imported/Fire Sprite.png-de662a97181997a09ef0eab6f726332d.ctex"]
 
 [params]
 
