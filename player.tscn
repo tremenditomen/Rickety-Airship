@@ -37,10 +37,10 @@ func apply_gravity(delta):
 			
 func handle_jump():
 	if is_on_floor():
-		if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		if Input.is_action_just_pressed(\"ui_up\") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 	else:
-		if Input.is_action_just_released(\"ui_accept\") and velocity.y < JUMP_VELOCITY / 2:
+		if Input.is_action_just_released(\"ui_up\") and velocity.y < JUMP_VELOCITY / 2:
 			velocity.y = JUMP_VELOCITY / 2
 				
 func apply_friction(direction, delta):
@@ -56,8 +56,12 @@ func update_animations(direction):
 		animated_sprite_2d.flip_h = direction < 0
 		animated_sprite_2d.play('run')
 	else:
-
 		animated_sprite_2d.play('idle')
+		
+		var actionables = actionable_finder.get_overlapping_areas()
+		if actionables.size() > 0 && Input.is_action_just_pressed(\"ui_accept\"):
+			actionables[0].action()
+			return
 	
 	
 "
@@ -149,7 +153,7 @@ animations = [{
 size = Vector2(29.5, 50)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2a3te"]
-radius = 17.0074
+radius = 25.5441
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-40, -30)
@@ -163,7 +167,7 @@ metadata/_edit_group_ = true
 position = Vector2(1, -4.25002)
 scale = Vector2(2.27083, 2.26042)
 sprite_frames = SubResource("SpriteFrames_2jls5")
-animation = &"idle"
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.25, -11)
@@ -173,8 +177,8 @@ shape = SubResource("RectangleShape2D_cxtv3")
 
 [node name="Actionable Finder" type="Area2D" parent="Direction"]
 collision_layer = 0
-collision_mask = 16
+collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/Actionable Finder"]
-position = Vector2(-4.5, 17.5)
+position = Vector2(1, -7.5)
 shape = SubResource("CircleShape2D_2a3te")

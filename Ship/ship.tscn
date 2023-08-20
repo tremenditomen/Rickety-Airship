@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=28 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://cypxaywnxhoj4" path="res://Ship/Balloon.png" id="1_fodv7"]
+[ext_resource type="PackedScene" uid="uid://bx03qr2kqqmt8" path="res://sprite_actionable.tscn" id="1_iil3u"]
+[ext_resource type="Texture2D" uid="uid://c560pt1asafdt" path="res://Ship/Propeller.png" id="2_qwa0p"]
 [ext_resource type="Texture2D" uid="uid://bfgsd5cq8xkjg" path="res://Ship/AirShip Body.png" id="3_hknwb"]
 [ext_resource type="Texture2D" uid="uid://cx1jiy0rdp1fl" path="res://Ship/AirShip Body Internal.png" id="4_8p31c"]
-[ext_resource type="Script" path="res://Ship/Ropes.gd" id="5_bcblm"]
-[ext_resource type="Texture2D" uid="uid://bfyeny5v05ugw" path="res://Ship/Ropes/Ropes Default.png" id="5_jaxv7"]
+[ext_resource type="Texture2D" uid="uid://ciwmw2t8gjlgi" path="res://Ship/AirShip Ropes Default.png" id="5_18yad"]
+[ext_resource type="Texture2D" uid="uid://ca6f0fyiqql3t" path="res://Ship/Fire/Fire Sprite.png" id="6_46jml"]
 
 [sub_resource type="GDScript" id="GDScript_m8yd1"]
 script/source = "extends Node2D
@@ -13,16 +15,90 @@ script/source = "extends Node2D
 var airship_speed = 15
 
 @onready var propeller = get_node(\"./Balloon/PropellerSprite\")
+@onready var fire_sprite = $Fire/FireSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	propeller.play(\"default\", airship_speed)
-
+ propeller.play(\"default\", airship_speed)
+ fire_sprite.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+ pass
 "
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p22yl"]
+atlas = ExtResource("6_46jml")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seke6"]
+atlas = ExtResource("6_46jml")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fani7"]
+atlas = ExtResource("6_46jml")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpfvm"]
+atlas = ExtResource("6_46jml")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qril7"]
+atlas = ExtResource("6_46jml")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nwh5"]
+atlas = ExtResource("6_46jml")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37m8w"]
+atlas = ExtResource("6_46jml")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmfcq"]
+atlas = ExtResource("6_46jml")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmq12"]
+atlas = ExtResource("6_46jml")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_suo0b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p22yl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seke6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fani7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpfvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qril7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nwh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37m8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmfcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmq12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7nxvl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_evm83"]
 animations = [{
@@ -35,23 +111,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_31037"]
-load_path = "res://.godot/imported/Propeller.png-25be7c2ce9eb1613fa9a513b2fe6e02f.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_pl20g"]
-atlas = SubResource("CompressedTexture2D_31037")
+atlas = ExtResource("2_qwa0p")
 region = Rect2(0, 0, 585, 390)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x0y5h"]
-atlas = SubResource("CompressedTexture2D_31037")
+atlas = ExtResource("2_qwa0p")
 region = Rect2(585, 0, 585, 390)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q78b8"]
-atlas = SubResource("CompressedTexture2D_31037")
+atlas = ExtResource("2_qwa0p")
 region = Rect2(0, 390, 585, 390)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aw4xo"]
-atlas = SubResource("CompressedTexture2D_31037")
+atlas = ExtResource("2_qwa0p")
 region = Rect2(585, 390, 585, 390)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hyudt"]
@@ -93,11 +166,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_c6uyk"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3a1vf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_jaxv7")
+"texture": ExtResource("5_18yad")
 }],
 "loop": true,
 "name": &"default",
@@ -107,11 +180,28 @@ animations = [{
 [node name="Ship" type="Node2D"]
 script = SubResource("GDScript_m8yd1")
 
+[node name="Fire" type="Node2D" parent="."]
+
+[node name="FireSprite" type="AnimatedSprite2D" parent="Fire"]
+position = Vector2(-6, 42)
+scale = Vector2(0.109375, 0.109375)
+sprite_frames = SubResource("SpriteFrames_suo0b")
+
+[node name="FireTimer" type="Timer" parent="Fire"]
+wait_time = 5.0
+autostart = true
+
+[node name="SpriteActionable" parent="Fire" instance=ExtResource("1_iil3u")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fire/SpriteActionable"]
+position = Vector2(-8, 45)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_7nxvl")
+
 [node name="Balloon" type="Node2D" parent="."]
 
 [node name="BalloonSprite" type="AnimatedSprite2D" parent="Balloon"]
 sprite_frames = SubResource("SpriteFrames_evm83")
-frame_progress = 0.31888
 
 [node name="PropellerSprite" type="AnimatedSprite2D" parent="Balloon"]
 sprite_frames = SubResource("SpriteFrames_hyudt")
@@ -127,7 +217,8 @@ animation = &"external"
 polygon = PackedVector2Array(-124, 57, 135, 57, 135, 52, 165, 52, 165, 55, 140, 58, 121, 88, 99, 106, 66, 112, 14, 121, -27, 114, -95, 112, -99, 119, -121, 116, -126, 71, -131, 71, -147, 52, -124, 52)
 
 [node name="Ropes" type="Node2D" parent="."]
-script = ExtResource("5_bcblm")
 
-[node name="Default Ropes" type="AnimatedSprite2D" parent="Ropes"]
-sprite_frames = SubResource("SpriteFrames_c6uyk")
+[node name="Default" type="AnimatedSprite2D" parent="Ropes"]
+sprite_frames = SubResource("SpriteFrames_3a1vf")
+
+[connection signal="timeout" from="Fire/FireTimer" to="Fire/SpriteActionable" method="_on_fire_timer_timeout"]
