@@ -754,10 +754,10 @@ libraries = {
 
 [node name="-600" type="ColorRect" parent="DistanceBar2"]
 layout_mode = 0
-offset_left = -1301.0
-offset_top = -241.0
-offset_right = -89.0
-offset_bottom = 434.0
+offset_left = -594.0
+offset_top = -237.0
+offset_right = 660.0
+offset_bottom = 675.0
 color = Color(0, 0, 0, 0)
 
 [node name="DialogueLabel" type="RichTextLabel" parent="DistanceBar2"]
