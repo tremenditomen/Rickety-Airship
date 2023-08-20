@@ -24,6 +24,15 @@ func fasten_rope(ropeArray):
 func stress_rope(ropeId):
 	ropeDict[ropeId].set_stress( ropeDict[ropeId].stress + 1 )
 
+func stressed_ropes():
+	var left_rope_ids = ['rope1','rope2','rope3','rope4','rope5',]
+	var right_rope_ids = ['rope6','rope7','rope8','rope9','rope10',]
+	var broken_left = left_rope_ids.filter(func(ropeId): 
+		return ropeDict[ropeId].stress > 2)
+	var broken_right = right_rope_ids.filter(func(ropeId): 
+		return ropeDict[ropeId].stress > 2)
+	return [broken_left, broken_right]
+
 func _ready():
 	for rope in ropeDict:
 		add_child(ropeDict[rope].line)
@@ -49,3 +58,4 @@ func _process(delta):
 	ropeDict.rope8.rope_redraw()
 	ropeDict.rope9.rope_redraw()
 	ropeDict.rope10.rope_redraw()
+	print(stressed_ropes())
