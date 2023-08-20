@@ -40,7 +40,7 @@ func _draw_curved_rope():
 		return true)
 
 func _determine_stress_point():
-	var stress_x = balloon_hook.x - stress - _halve_difference(balloon_hook.x, ship_hook.x)
+	var stress_x = balloon_hook.x - stress + _halve_difference(balloon_hook.x, ship_hook.x)
 	var stress_y = balloon_hook.y + stress + _halve_difference(balloon_hook.y, ship_hook.y)
 	return Vector2(stress_x, stress_y)
 
