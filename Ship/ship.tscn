@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=33 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://cypxaywnxhoj4" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="PackedScene" uid="uid://bx03qr2kqqmt8" path="res://sprite_actionable.tscn" id="1_iil3u"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ca6f0fyiqql3t" path="res://Ship/Fire/Fire Sprite.png" id="6_46jml"]
 [ext_resource type="Script" path="res://Ship/RopesController.gd" id="7_m8rgx"]
 [ext_resource type="Script" path="res://Ship/FireBar.gd" id="8_1uc35"]
+[ext_resource type="Script" path="res://Ship/DistanceBar2.gd" id="9_j22cx"]
 
 [sub_resource type="GDScript" id="GDScript_m8yd1"]
 script/source = "extends Node2D
@@ -18,8 +19,12 @@ const MAX_ALTITUDE = 50
 var altitude = MAX_ALTITUDE
 const MAX_FUEL = 100
 var fuel = MAX_FUEL
+const MAX_DISTANCE = 100
+var distance = 0
+
 @onready var node = get_node(\"AltitudeBar\")
 @onready var fuel_node = get_node(\"FuelBar2\")
+@onready var distance_node = get_node(\"DistanceBar2\")
 @onready var propeller = get_node(\"./Balloon/PropellerSprite\")
 @onready var fire_sprite = $Fire/FireSprite
 
@@ -29,8 +34,10 @@ func _ready():
  fire_sprite.hide()
  $AltitudeBar.max_value = MAX_ALTITUDE
  $FuelBar2.max_value = MAX_FUEL
+ $DistanceBar2.max_value = MAX_DISTANCE
  update_altitude()
  update_fuel()
+ update_distance()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -41,26 +48,37 @@ func update_altitude():
 func update_fuel():
  $FuelBar2.value = fuel
 
+func update_distance():
+ $DistanceBar2.value = distance
+
 
 func _on_timer_timeout():
  altitude -= .1
  fuel -= .1
+ distance += .1
 
  if altitude == 50 && altitude > 25:
   node.fullAltitude()
- if fuel == 100 && altitude > 50:
+ if fuel == 100 && fuel > 50:
   fuel_node.fullfuel()
+ if distance == 100 && distance > 50:
+  distance_node.fullDistance()
  if altitude < 25 && altitude > 12.5:
   node.midAltitude()
  if fuel< 50 && fuel > 25:
   fuel_node.midfuel()
+ if distance < 50 && distance > 25:
+  distance_node.midDistance()
  if altitude < 12.5:
   node.lowAltitude()
  if fuel< 25:
   fuel_node.lowfuel()
+ if distance < 25:
+   distance_node.lowDistance()
 
  update_altitude()
  update_fuel()
+ update_distance()
 
 func increase():
  altitude += .2
@@ -70,9 +88,6 @@ func increase():
 func decrease_fuel():
  fuel -= .2
  update_fuel()
- 
-
-
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p22yl"]
@@ -354,9 +369,9 @@ text = "Interact"
 
 [node name="FuelBar2" type="ProgressBar" parent="."]
 offset_left = 448.0
-offset_top = 335.0
+offset_top = 336.0
 offset_right = 465.0
-offset_bottom = 638.0
+offset_bottom = 639.0
 rotation = 1.5708
 theme_override_styles/fill = SubResource("StyleBoxFlat_n7t5w")
 step = 1.0
@@ -387,7 +402,15 @@ offset_right = 554.0
 offset_bottom = 323.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_ja76s")
 step = 1.0
+fill_mode = 3
+script = ExtResource("9_j22cx")
+
+[node name="Timer" type="Timer" parent="DistanceBar2"]
+wait_time = 120.0
+one_shot = true
+autostart = true
 
 [connection signal="timeout" from="Fire/FireTimer" to="Fire/SpriteActionable" method="_on_fire_timer_timeout"]
 [connection signal="timeout" from="AltitudeBar/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="FuelBar2/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DistanceBar2/Timer" to="." method="_on_timer_timeout_distance"]
