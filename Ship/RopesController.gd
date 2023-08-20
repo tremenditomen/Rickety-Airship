@@ -37,3 +37,15 @@ func _on_rope_stress_timer_timeout():
 	var rngRope = "rope%s"
 	var randomNum = rngRope  %rng.randi_range(1,10)
 	stress_rope(randomNum)
+
+func _process(delta):
+	ropeDict.rope1.rope_redraw()
+	ropeDict.rope2.rope_redraw()
+	ropeDict.rope3.rope_redraw()
+	ropeDict.rope4.rope_redraw()
+	ropeDict.rope5.rope_redraw()
+	ropeDict.rope6.rope_redraw()
+	ropeDict.rope7.rope_redraw()
+	ropeDict.rope8.rope_redraw()
+	ropeDict.rope9.rope_redraw()
+	ropeDict.rope10.rope_redraw()

@@ -463,7 +463,7 @@ position = Vector2(-44, 35)
 script = ExtResource("7_m8rgx")
 
 [node name="RopeStressTimer" type="Timer" parent="RopesController"]
-wait_time = 5.0
+wait_time = 2.0
 autostart = true
 
 [node name="Rope1" type="Area2D" parent="RopesController"]
