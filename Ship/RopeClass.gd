@@ -14,9 +14,9 @@ func _init(balloon_hook_init:Vector2, ship_hook_init:Vector2):
 	ship_hook = ship_hook_init
 	line.default_color = Color(0.4549, 0.247, 0.2235)
 	line.width = 2
-	_draw_simple_rope()
-	#_draw_curved_rope()
 	stress = 0
+	#_draw_simple_rope()
+	_draw_curved_rope()
 
 func _draw_rope():
 	if stress > 0:
@@ -40,12 +40,12 @@ func _draw_curved_rope():
 		return true)
 
 func _determine_stress_point():
-	var stress_x = balloon_hook.x - stress + _halve_difference(balloon_hook.x, ship_hook.x)
-	var stress_y = balloon_hook.y + stress + _halve_difference(balloon_hook.y, ship_hook.y)
+	var stress_x = balloon_hook.x - _halve_difference(balloon_hook.x, ship_hook.x) - stress
+	var stress_y = balloon_hook.y + _halve_difference(ship_hook.y, balloon_hook.y) + stress
 	return Vector2(stress_x, stress_y)
 
 func _halve_difference(p0: float, p1: float):
-	return abs((p0 - p1) / 2)
+	return (p0 - p1) / 2
 
 func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
 	var q0 = p0.lerp(p1, t)
