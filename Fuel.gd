@@ -1,6 +1,7 @@
 extends Node2D
 const MAX_DISTANCE = 10
 var distance = 0
+@onready var complete = get_node("Compleete")
 
 
 
@@ -36,9 +37,9 @@ func set_Distance_bar () -> void:
 	#set_Distance_label()
 	#set_Distance_bar()
 
-
+ 
 func _on_timer_timeout():
-	distance +=1
+	distance +=5
 	if distance == 7:
 		node.fulldistance()
 
@@ -46,10 +47,12 @@ func _on_timer_timeout():
 		node.middistance()   
 	elif distance<3:
 		node.lowdistance()
-	elif distance > MAX_DISTANCE:
+	elif distance >=  10:
+		print("arrived")
+		complete.transition()
 		
-
 		distance = 0
+		
 #	set_Distance_label()
 	set_Distance_bar()
 
