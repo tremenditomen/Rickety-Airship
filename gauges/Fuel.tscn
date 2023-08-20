@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccjlnpfdbth81"]
+[gd_scene load_steps=4 format=3 uid="uid://dr3fsor4i32vc"]
 
 [sub_resource type="GDScript" id="GDScript_meg34"]
 script/source = "extends Node2D
@@ -23,7 +23,6 @@ func _input(event: InputEvent) -> void:
 		
 
 func damage():
-	
 	fuel -=1
 	if fuel<0 || fuel == 10:
 		node.fullfuel()

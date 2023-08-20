@@ -52,4 +52,5 @@ position = Vector2(-167, 112)
 position = Vector2(809, 43)
 
 [node name="Fuel" parent="." instance=ExtResource("8_81hun")]
+visible = false
 position = Vector2(177, -216)
