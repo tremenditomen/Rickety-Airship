@@ -265,18 +265,20 @@ script = SubResource("GDScript_m8yd1")
 [node name="Fire" type="Node2D" parent="."]
 
 [node name="FireSprite" type="AnimatedSprite2D" parent="Fire"]
-position = Vector2(-6, 42)
+position = Vector2(273, 220)
 scale = Vector2(0.109375, 0.109375)
 sprite_frames = SubResource("SpriteFrames_suo0b")
+centered = false
 
 [node name="FireTimer" type="Timer" parent="Fire"]
 wait_time = 5.0
 autostart = true
 
 [node name="SpriteActionable" parent="Fire" instance=ExtResource("1_iil3u")]
+position = Vector2(3, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fire/SpriteActionable"]
-position = Vector2(-8, 45)
+position = Vector2(284, 235)
 scale = Vector2(2.5, 2.5)
 shape = SubResource("CircleShape2D_7nxvl")
 
@@ -284,28 +286,33 @@ shape = SubResource("CircleShape2D_7nxvl")
 
 [node name="BalloonSprite" type="AnimatedSprite2D" parent="Balloon"]
 sprite_frames = SubResource("SpriteFrames_evm83")
+centered = false
 
 [node name="PropellerSprite" type="AnimatedSprite2D" parent="Balloon"]
 sprite_frames = SubResource("SpriteFrames_hyudt")
 frame_progress = 0.0963933
+centered = false
 
 [node name="ShipArea" type="StaticBody2D" parent="."]
 
 [node name="ShipSprite" type="AnimatedSprite2D" parent="ShipArea"]
 sprite_frames = SubResource("SpriteFrames_tkvf0")
 animation = &"external"
+centered = false
 
 [node name="ShipCollision" type="CollisionPolygon2D" parent="ShipArea"]
+position = Vector2(293, 194)
 polygon = PackedVector2Array(-124, 57, 135, 57, 135, 52, 165, 52, 165, 55, 140, 58, 121, 88, 99, 106, 66, 112, 14, 121, -27, 114, -95, 112, -99, 119, -121, 116, -126, 71, -131, 71, -147, 52, -124, 52)
 
 [node name="RopesController" type="Node2D" parent="."]
+position = Vector2(-44, 35)
 script = ExtResource("7_m8rgx")
 
 [node name="AltitudeBar" type="ProgressBar" parent="."]
-offset_left = -257.0
-offset_top = -16.0
-offset_right = -240.0
-offset_bottom = 162.0
+offset_left = 26.0
+offset_top = 145.0
+offset_right = 43.0
+offset_bottom = 323.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_jsr1m")
 max_value = 50.0
 step = 1.0
@@ -329,19 +336,19 @@ theme_override_font_sizes/font_size = 12
 text = "Altitude"
 
 [node name="FireInteractLabel" type="Label" parent="."]
-offset_left = -23.0
-offset_top = 11.0
-offset_right = 38.0
-offset_bottom = 37.0
+offset_left = 269.0
+offset_top = 206.0
+offset_right = 330.0
+offset_bottom = 232.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Interact"
 
 [node name="FuelBar2" type="ProgressBar" parent="."]
-offset_left = 156.0
-offset_top = 143.0
-offset_right = 173.0
-offset_bottom = 446.0
+offset_left = 448.0
+offset_top = 336.0
+offset_right = 465.0
+offset_bottom = 639.0
 rotation = 1.5708
 theme_override_styles/fill = SubResource("StyleBoxFlat_n7t5w")
 step = 1.0
