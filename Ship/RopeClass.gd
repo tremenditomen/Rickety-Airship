@@ -4,24 +4,34 @@ class_name Rope
 
 var balloon_hook: Vector2
 var ship_hook: Vector2
-var line: Line2D
-var stress: int
+var line = Line2D.new()
+var stress = 1
+
+var stress_modifier = 0
+
+const TIME_PERIOD = 0.5 # 500ms
+var time_between_redraws = 0
 
 # Class Constructor
 func _init(balloon_hook_init:Vector2, ship_hook_init:Vector2):
-	line = Line2D.new()
 	balloon_hook = balloon_hook_init
 	ship_hook = ship_hook_init
 	line.default_color = Color(0.4549, 0.247, 0.2235)
 	line.width = 2
-	stress = 0
 	_draw_simple_rope()
+	
+func _process(delta):
+	time_between_redraws += delta
+	if time_between_redraws > TIME_PERIOD:
+		_rope_redraw()
+		# Reset timer
+		time_between_redraws = 0
 
 func set_stress(input_stress = false):
 	stress = input_stress
-	_draw_rope()
+	draw_rope()
 
-func _draw_rope():
+func draw_rope():
 	if stress == 0:
 		_draw_simple_rope()
 	elif stress < 2:
@@ -91,3 +101,18 @@ func _quarter_point(start: Vector2, end: Vector2):
 	var quarter_x = start.x - ((start.x - end.x) / 4) + random
 	var quarter_y = start.y + ((end.y - start.y) / 4) + random
 	return Vector2(quarter_x, quarter_y)
+
+func _rope_redraw():
+	if stress > 0:
+		draw_rope()
+
+func _get_stress_modifier():
+	var random_integer = randi_range(1,3)
+	if (stress_modifier > 10):
+		random_integer *= -1
+	elif (stress_modifier < -10):
+		pass
+	else:
+		random_integer *= -1^(randi_range(0,1))
+	stress_modifier += random_integer
+	return stress_modifier
