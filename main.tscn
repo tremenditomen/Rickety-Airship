@@ -49,6 +49,7 @@ visible = false
 position = Vector2(-167, 112)
 
 [node name="Distance" parent="." instance=ExtResource("8_8hy48")]
+visible = false
 position = Vector2(809, 43)
 
 [node name="Fuel" parent="." instance=ExtResource("8_81hun")]
