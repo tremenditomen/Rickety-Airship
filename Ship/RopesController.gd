@@ -15,8 +15,11 @@ var ropeDict = {
 	rope10 = ropeKlass.new(Vector2(505, 150), Vector2(478.5, 211)),
 }
 
-func fasten_rope(ropeId):
-	ropeDict[ropeId].set_stress(0)
+func fasten_rope(ropeArray):
+	var ropeId
+	for i in ropeArray.size():
+		ropeId = ropeArray[i]
+		ropeDict[ropeId].set_stress(0)
 	
 func stress_rope(ropeId):
 	ropeDict[ropeId].set_stress( ropeDict[ropeId].stress + 1 )
