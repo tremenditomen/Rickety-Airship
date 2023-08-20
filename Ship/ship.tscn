@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=43 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://cypxaywnxhoj4" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="PackedScene" uid="uid://bx03qr2kqqmt8" path="res://sprite_actionable.tscn" id="1_iil3u"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Ship/FireBar.gd" id="8_1uc35"]
 [ext_resource type="Script" path="res://Ship/RopeActionable.gd" id="8_yu1br"]
 [ext_resource type="Script" path="res://Ship/DistanceBar2.gd" id="9_j22cx"]
+[ext_resource type="Script" path="res://Ship/RightRopeActionable.gd" id="9_w575h"]
 [ext_resource type="Script" path="res://Ship/Complete.gd" id="10_wev4u"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="11_i2nkt"]
 
@@ -399,7 +400,11 @@ script = ExtResource("8_yu1br")
 position = Vector2(221, 174)
 shape = SubResource("RectangleShape2D_lhtj6")
 
-[node name="RightRopesCollision" type="CollisionShape2D" parent="RopesController/RopeActionable"]
+[node name="RightRopeActionable" type="Area2D" parent="RopesController"]
+collision_layer = 4
+script = ExtResource("9_w575h")
+
+[node name="RightRopesCollision" type="CollisionShape2D" parent="RopesController/RightRopeActionable"]
 position = Vector2(478, 168)
 shape = SubResource("RectangleShape2D_43o3y")
 
@@ -502,7 +507,6 @@ offset_left = -530.0
 offset_top = -151.0
 offset_right = 635.0
 offset_bottom = 506.0
-
 color = Color(0, 0, 0, 0)
 
 [node name="DialogueLabel" type="RichTextLabel" parent="DistanceBar2"]
