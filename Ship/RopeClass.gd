@@ -58,8 +58,8 @@ func _draw_curved_rope():
 		return true)
 
 func _draw_loose_rope():
-	_set_loose_rope_end()
-	_check_flex_points()
+	var end_modifiers = _set_loose_rope_end()
+	_set_flex_points(end_modifiers)
 	var curve_points = range(10).map(func(number): 
 		return _cubic_bezier(balloon_hook, broke_rope_point_1, broke_rope_point_2, loose_rope_end, number * .1))
 	curve_points.push_back(loose_rope_end)
@@ -94,9 +94,12 @@ func _cubic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, p3: Vector2, t: float)
 	return s
 
 func _set_loose_rope_end():
-	var loose_rope_end_x = loose_rope_end.x + _get_loose_rope_x_modifier()
-	var loose_rope_end_y = loose_rope_end.y + _get_loose_rope_y_modifier()
+	var x_modifier = _get_loose_rope_x_modifier()
+	var y_modifier = _get_loose_rope_y_modifier()
+	var loose_rope_end_x = loose_rope_end.x + x_modifier
+	var loose_rope_end_y = loose_rope_end.y + y_modifier
 	loose_rope_end = Vector2(loose_rope_end_x, loose_rope_end_y)
+	return [x_modifier, y_modifier]
 
 func _quarter_point(start: Vector2, end: Vector2, random = true):
 	var randomNum = randf_range(-10, 10)
@@ -145,6 +148,6 @@ func _get_loose_rope_y_modifier():
 	loose_rope_y_modifier += random_integer
 	return loose_rope_y_modifier
 
-func _check_flex_points():
+func _set_flex_points(endpoint_modifiers):
 	broke_rope_point_1 = _quarter_point(balloon_hook, loose_rope_end, loose_rope_x_modifier)
 	broke_rope_point_2 = _quarter_point(loose_rope_end, balloon_hook, loose_rope_y_modifier)
