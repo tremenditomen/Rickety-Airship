@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=62 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://cypxaywnxhoj4" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="PackedScene" uid="uid://bx03qr2kqqmt8" path="res://sprite_actionable.tscn" id="1_iil3u"]
@@ -29,9 +29,8 @@ script/source = "extends Node2D
 var airship_speed = 15
 const MAX_ALTITUDE = 1000
 var altitude = MAX_ALTITUDE
-const MAX_FUEL = clamp(1000,0,1000)
+const MAX_FUEL = 1000
 var fuel = MAX_FUEL
-var minfuel = 0
 const MAX_DISTANCE = 1200
 var distance = 0
 
@@ -41,11 +40,9 @@ var distance = 0
 @onready var propeller = get_node(\"./Balloon/PropellerSprite\")
 @onready var complete = $DistanceBar2/Complete
 @onready var altOver = $AltitudeBar/CanvasLayer
-@onready var fuelOver = $FuelBar2/CanvasLayer
 @onready var fire_sprite = $Fire/FireSprite
 @onready var dialogue_label = $DistanceBar2/DialogueLabel
 @onready var timer = $AltitudeBar/Timer
-@onready var timer_fuel = $FuelBar2/Timer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -80,30 +77,32 @@ func _on_timer_timeout():
 
  if altitude == 1000 && altitude > 500:
   node.fullAltitude()
- if fuel == 1000 && fuel > 500:
+ if fuel == 100 && fuel > 50:
   fuel_node.fullfuel()
  if distance == 100 && distance > 50:
   distance_node.fullDistance()
  if altitude < 500 && altitude > 250:
   node.midAltitude()
- if fuel< 500 && fuel > 250:
+ if fuel< 50 && fuel > 25:
   fuel_node.midfuel()
  if distance < 50 && distance > 25:
   distance_node.midDistance()
  if altitude < 250:
   node.lowAltitude()
- if fuel< 250:
-   fuel_node.lowfuel()
+ if fuel< 25:
+  fuel_node.lowfuel()
  if distance < 25:
    distance_node.lowDistance()
  if distance == 1200 && altitude > 0 && fuel > 0:
   complete.transition()
   timer.stop()
- if altitude ==0 && distance <1200:	
+ if altitude == 0:	
    altOver.transition()
    timer.stop()
+ elif fuel == 0 || fuel < 0:
+  altOver.transition()
+  timer.stop()
 
-  
 
 
  update_altitude()
@@ -331,7 +330,7 @@ func lowAltitude():
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -370,55 +369,6 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
-
-[sub_resource type="GDScript" id="GDScript_cmtwo"]
-script/source = "extends CanvasLayer
-
-@onready var animation_player = $\"../AnimationPlayer\"
-@onready var dialogue_label = $\"../DialogueLabel\"
-
-
-
-func transition ():
-	dialogue_label.visible = true
-	animation_player.play(\"fuel_to_black\")
-"
-
-[sub_resource type="Animation" id="Animation_b0avu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ebv18"]
-resource_name = "fuel_to_black"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ee81"]
-_data = {
-"RESET": SubResource("Animation_b0avu"),
-"fuel_to_black": SubResource("Animation_ebv18")
-}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ja76s"]
 bg_color = Color(0.788235, 0, 0, 0)
@@ -645,7 +595,7 @@ libraries = {
 "": SubResource("AnimationLibrary_ojd5m")
 }
 
-[node name="CrashLabel" type="RichTextLabel" parent="AltitudeBar"]
+[node name="DialogueLabel" type="RichTextLabel" parent="AltitudeBar"]
 visible = false
 top_level = true
 layout_mode = 0
@@ -693,35 +643,20 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
 text = "Fuel"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="FuelBar2"]
-script = SubResource("GDScript_cmtwo")
-
-[node name="ColorRect" type="ColorRect" parent="FuelBar2"]
-top_level = true
-layout_mode = 0
-offset_left = -228.0
-offset_top = -260.0
-offset_right = 1317.0
-offset_bottom = 1046.0
-color = Color(0, 0, 0, 0)
-
-[node name="DialogueLabel" type="RichTextLabel" parent="FuelBar2"]
+[node name="DialogueLabel2" type="RichTextLabel" parent="FuelBar2"]
 visible = false
 top_level = true
 layout_mode = 0
-offset_left = 452.0
-offset_top = 243.0
-offset_right = 801.0
-offset_bottom = 452.0
-text = "Oh No! Why are we stopping ?????
+offset_left = 442.0
+offset_top = 287.0
+offset_right = 636.0
+offset_bottom = 327.0
+theme_override_font_sizes/normal_font_size = 12
+text = "Oh No! you crashed
 
-						GAME OVER:"
+
+Game Over"
 script = ExtResource("11_i2nkt")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FuelBar2"]
-libraries = {
-"": SubResource("AnimationLibrary_1ee81")
-}
 
 [node name="DistanceBar2" type="ProgressBar" parent="."]
 offset_left = 537.0
@@ -754,10 +689,10 @@ libraries = {
 
 [node name="-600" type="ColorRect" parent="DistanceBar2"]
 layout_mode = 0
-offset_left = -594.0
-offset_top = -237.0
-offset_right = 660.0
-offset_bottom = 675.0
+offset_left = -1301.0
+offset_top = -241.0
+offset_right = -89.0
+offset_bottom = 434.0
 color = Color(0, 0, 0, 0)
 
 [node name="DialogueLabel" type="RichTextLabel" parent="DistanceBar2"]
