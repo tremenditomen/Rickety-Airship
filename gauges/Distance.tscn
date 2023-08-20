@@ -75,6 +75,7 @@ offset_bottom = 180.0
 text = "Distance:"
 
 [node name="Compleete" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("3_01ytg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Compleete"]
@@ -83,6 +84,7 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="Compleete"]
+visible = false
 offset_left = -10.0
 offset_top = -2.0
 offset_right = 1155.0
@@ -90,7 +92,6 @@ offset_bottom = 655.0
 color = Color(0, 0, 0, 0)
 
 [node name="DialogueLabel" type="RichTextLabel" parent="Compleete"]
-visible = false
 offset_left = 465.0
 offset_top = 308.0
 offset_right = 666.0
