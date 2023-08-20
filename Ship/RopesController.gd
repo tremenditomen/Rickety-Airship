@@ -16,10 +16,10 @@ var ropeDict = {
 }
 
 func fasten_rope(ropeId):
-	ropeDict[ropeId].stress = 0
+	ropeDict[ropeId].set_stress(0)
 	
 func stress_rope(ropeId):
-	ropeDict[ropeId].stress += 1
+	ropeDict[ropeId].set_stress( ropeDict[ropeId].stress + 1 )
 
 func _ready():
 	for rope in ropeDict:
@@ -29,9 +29,5 @@ func _ready():
 func _on_rope_timer_timeout():
 	rng.randomize()
 	var rngRope = "rope%s"
-	
 	var randomNum = rngRope  %rng.randi_range(1,10)
-	#print(rng.randi_range(1,10))
-	print(stress_rope(randomNum))
-	
-	#print(ropeDict[random_number])
+	stress_rope(randomNum)
