@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=31 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://cypxaywnxhoj4" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="PackedScene" uid="uid://bx03qr2kqqmt8" path="res://sprite_actionable.tscn" id="1_iil3u"]
@@ -7,15 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://cx1jiy0rdp1fl" path="res://Ship/AirShip Body Internal.png" id="4_8p31c"]
 [ext_resource type="Texture2D" uid="uid://ca6f0fyiqql3t" path="res://Ship/Fire/Fire Sprite.png" id="6_46jml"]
 [ext_resource type="Script" path="res://Ship/RopesController.gd" id="7_m8rgx"]
+[ext_resource type="Script" path="res://Ship/FireBar.gd" id="8_1uc35"]
 
 [sub_resource type="GDScript" id="GDScript_m8yd1"]
 script/source = "extends Node2D
 
 
 var airship_speed = 15
-const MAX_ALTITUDE = 10
+const MAX_ALTITUDE = 50
 var altitude = MAX_ALTITUDE
+const MAX_FUEL = 100
+var fuel = MAX_FUEL
 @onready var node = get_node(\"AltitudeBar\")
+@onready var fuel_node = get_node(\"FuelBar2\")
 @onready var propeller = get_node(\"./Balloon/PropellerSprite\")
 @onready var fire_sprite = $Fire/FireSprite
 
@@ -24,7 +28,9 @@ func _ready():
  propeller.play(\"default\", airship_speed)
  fire_sprite.hide()
  $AltitudeBar.max_value = MAX_ALTITUDE
+ $FuelBar2.max_value = MAX_FUEL
  update_altitude()
+ update_fuel()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -32,21 +38,38 @@ func _ready():
 func update_altitude():
  $AltitudeBar.value = altitude
 
+func update_fuel():
+ $FuelBar2.value = fuel
+
 
 func _on_timer_timeout():
- altitude -=.1
- if altitude == 10:
+ altitude -= .1
+ fuel -= .1
+
+ if altitude == 50 && altitude > 25:
   node.fullAltitude()
- elif altitude < 6 && altitude > 3:
+ if fuel == 100 && altitude > 50:
+  fuel_node.fullfuel()
+ if altitude < 25 && altitude > 12.5:
   node.midAltitude()
- elif altitude < 3:
+ if fuel< 50 && fuel > 25:
+  fuel_node.midfuel()
+ if altitude < 12.5:
   node.lowAltitude()
+ if fuel< 25:
+  fuel_node.lowfuel()
 
  update_altitude()
+ update_fuel()
 
 func increase():
  altitude += .2
  update_altitude()
+ decrease_fuel()
+
+func decrease_fuel():
+ fuel -= .2
+ update_fuel()
  
 
 
@@ -228,6 +251,14 @@ func lowAltitude():
 	sb.border_color = Color(\"000000\")
 "
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7t5w"]
+bg_color = Color(0.027451, 0.819608, 0.0156863, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+
 [node name="Ship" type="Node2D"]
 script = SubResource("GDScript_m8yd1")
 
@@ -283,9 +314,9 @@ offset_top = 145.0
 offset_right = 43.0
 offset_bottom = 323.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_jsr1m")
-max_value = 10.0
+max_value = 50.0
 step = 1.0
-value = 10.0
+value = 50.0
 fill_mode = 3
 show_percentage = false
 script = SubResource("GDScript_fk8nw")
@@ -313,5 +344,23 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 text = "Interact"
 
+[node name="FuelBar2" type="ProgressBar" parent="."]
+offset_left = 156.0
+offset_top = 143.0
+offset_right = 173.0
+offset_bottom = 446.0
+rotation = 1.5708
+theme_override_styles/fill = SubResource("StyleBoxFlat_n7t5w")
+step = 1.0
+value = 100.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("8_1uc35")
+
+[node name="Timer" type="Timer" parent="FuelBar2"]
+wait_time = 0.1
+autostart = true
+
 [connection signal="timeout" from="Fire/FireTimer" to="Fire/SpriteActionable" method="_on_fire_timer_timeout"]
 [connection signal="timeout" from="AltitudeBar/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="FuelBar2/Timer" to="." method="_on_timer_timeout"]
