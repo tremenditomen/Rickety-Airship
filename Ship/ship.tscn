@@ -346,9 +346,9 @@ text = "Interact"
 
 [node name="FuelBar2" type="ProgressBar" parent="."]
 offset_left = 448.0
-offset_top = 336.0
+offset_top = 335.0
 offset_right = 465.0
-offset_bottom = 639.0
+offset_bottom = 638.0
 rotation = 1.5708
 theme_override_styles/fill = SubResource("StyleBoxFlat_n7t5w")
 step = 1.0
