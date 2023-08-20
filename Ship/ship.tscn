@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=43 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://cypxaywnxhoj4" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="PackedScene" uid="uid://dulnr11orkiwd" path="res://sprite_actionable.tscn" id="1_iil3u"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ca6f0fyiqql3t" path="res://Ship/Fire/Fire Sprite.png" id="6_46jml"]
 [ext_resource type="Script" path="res://Ship/RopesController.gd" id="7_m8rgx"]
 [ext_resource type="Script" path="res://Ship/FireBar.gd" id="8_1uc35"]
+[ext_resource type="Script" path="res://Ship/CanvasLayer.gd" id="9_8upmt"]
 [ext_resource type="Script" path="res://Ship/DistanceBar2.gd" id="9_j22cx"]
 [ext_resource type="Script" path="res://Ship/Complete.gd" id="10_wev4u"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="11_i2nkt"]
@@ -32,6 +33,7 @@ var distance = 0
 @onready var fire_sprite = $Fire/FireSprite
 @onready var dialogue_label = $DistanceBar2/DialogueLabel
 @onready var timer = $AltitudeBar/Timer
+@onready var altDrop = $AltitudeBar/altOver
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -84,6 +86,8 @@ func _on_timer_timeout():
  if distance == 1200 && altitude > 0 && fuel > 0:
   complete.transition()
   timer.stop()
+ if altitude == 0:
+  altDrop.transition()
 
  update_altitude()
  update_fuel()
@@ -275,6 +279,42 @@ func lowAltitude():
 	sb.border_color = Color(\"000000\")
 "
 
+[sub_resource type="Animation" id="Animation_yv52l"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k124a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4xfmt"]
+_data = {
+"RESET": SubResource("Animation_k124a"),
+"fade_to_black": SubResource("Animation_yv52l")
+}
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7t5w"]
 bg_color = Color(0.027451, 0.819608, 0.0156863, 1)
 border_width_left = 1
@@ -411,6 +451,34 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
 text = "Altitude"
 
+[node name="ColorRect" type="ColorRect" parent="AltitudeBar"]
+top_level = true
+layout_mode = 0
+offset_left = -43.0
+offset_top = -49.0
+offset_right = 1198.0
+offset_bottom = 761.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AltitudeBar"]
+libraries = {
+"": SubResource("AnimationLibrary_4xfmt")
+}
+
+[node name="DialogueLabel" type="RichTextLabel" parent="AltitudeBar"]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 400.0
+offset_top = 300.0
+offset_right = 672.0
+offset_bottom = 340.0
+text = "Oh No! Wer're Crashing!!!!!"
+script = ExtResource("11_i2nkt")
+
+[node name="altOver" type="CanvasLayer" parent="AltitudeBar"]
+script = ExtResource("9_8upmt")
+
 [node name="FireInteractLabel" type="Label" parent="."]
 offset_left = 269.0
 offset_top = 206.0
@@ -479,10 +547,10 @@ libraries = {
 
 [node name="-600" type="ColorRect" parent="DistanceBar2"]
 layout_mode = 0
-offset_left = -560.0
-offset_top = -162.0
-offset_right = 652.0
-offset_bottom = 513.0
+offset_left = -553.0
+offset_top = -150.0
+offset_right = 659.0
+offset_bottom = 525.0
 color = Color(0, 0, 0, 0)
 
 [node name="DialogueLabel" type="RichTextLabel" parent="DistanceBar2"]
