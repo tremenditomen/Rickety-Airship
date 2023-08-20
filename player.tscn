@@ -177,7 +177,7 @@ shape = SubResource("RectangleShape2D_cxtv3")
 
 [node name="Actionable Finder" type="Area2D" parent="Direction"]
 collision_layer = 0
-collision_mask = 23
+collision_mask = 4095
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/Actionable Finder"]
 position = Vector2(1, -7.5)
