@@ -41,21 +41,21 @@ _data = {
 
 [node name="GameOver" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GameOverLayer" type="CanvasLayer" parent="."]
 script = ExtResource("1_h4lfp")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOverLayer"]
 root_node = NodePath("../ColorRect")
 libraries = {
 "": SubResource("AnimationLibrary_dgx0h")
 }
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="GameOverLayer"]
 offset_right = 1158.0
 offset_bottom = 646.0
 color = Color(0, 0, 0, 1)
 
-[node name="DialogueLabel" type="RichTextLabel" parent="CanvasLayer"]
+[node name="DialogueLabel" type="RichTextLabel" parent="GameOverLayer"]
 offset_left = 501.0
 offset_top = 308.0
 offset_right = 641.0
