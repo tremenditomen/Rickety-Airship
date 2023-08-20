@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c20rsv24nax7u"]
+[gd_scene load_steps=6 format=3 uid="uid://c20rsv24nax7u"]
 
+[ext_resource type="Script" path="res://endings/MissionCompleteLayer.gd" id="1_8ey7b"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="1_n0yue"]
 
 [sub_resource type="Animation" id="Animation_a46kx"]
@@ -41,6 +42,7 @@ _data = {
 [node name="MissionComplete" type="Node2D"]
 
 [node name="MissionCompleteLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_8ey7b")
 
 [node name="ColorRect" type="ColorRect" parent="MissionCompleteLayer"]
 offset_right = 1176.0
