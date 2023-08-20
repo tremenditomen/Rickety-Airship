@@ -40,13 +40,15 @@ func set_Distance_bar () -> void:
 func _on_timer_timeout():
 	distance +=1
 	if distance == 7:
-		node.fullfuel()
+		node.fulldistance()
 
 	elif distance<6 && distance > 3:
-		node.midfuel()   
+		node.middistance()   
 	elif distance<3:
-		node.lowfuel()
+		node.lowdistance()
 	elif distance > MAX_DISTANCE:
+		
+
 		distance = 0
 #	set_Distance_label()
 	set_Distance_bar()

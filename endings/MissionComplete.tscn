@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://c20rsv24nax7u"]
+
+[ext_resource type="Script" path="res://endings/MissionCompleteLayer.gd" id="1_8ey7b"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="1_n0yue"]
+
+[sub_resource type="Animation" id="Animation_a46kx"]
+resource_name = "Fade_To_Dock"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_macu7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sxj10"]
+_data = {
+"Fade_To_Dock": SubResource("Animation_a46kx"),
+"RESET": SubResource("Animation_macu7")
+}
+
+[node name="MissionComplete" type="Node2D"]
+
+[node name="MissionCompleteLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_8ey7b")
+
+[node name="ColorRect" type="ColorRect" parent="MissionCompleteLayer"]
+offset_right = 1176.0
+offset_bottom = 668.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MissionCompleteLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_sxj10")
+}
+
+[node name="DialogueLabel" type="RichTextLabel" parent="MissionCompleteLayer"]
+offset_left = 506.0
+offset_top = 308.0
+offset_right = 664.0
+offset_bottom = 348.0
+text = "I did it :D "
+script = ExtResource("1_n0yue")
