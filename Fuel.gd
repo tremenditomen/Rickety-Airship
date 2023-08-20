@@ -39,7 +39,7 @@ func set_Distance_bar () -> void:
 
  
 func _on_timer_timeout():
-	distance +=5
+	distance +=2
 	if distance == 7:
 		node.fulldistance()
 
@@ -50,9 +50,12 @@ func _on_timer_timeout():
 	elif distance >=  10:
 		print("arrived")
 		complete.transition()
+		$Timer.stop()
 		
-		distance = 0
+		
+		
 		
 #	set_Distance_label()
 	set_Distance_bar()
+	
 
