@@ -40,7 +40,7 @@ func set_Distance_bar () -> void:
  
 func _on_timer_timeout():
 	distance +=2
-	if distance == 7:
+	if distance >= 7:
 		node.fulldistance()
 
 	elif distance<6 && distance > 3:
