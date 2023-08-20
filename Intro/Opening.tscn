@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://chbsce63qr8nn"]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="1_h4gkn"]
+
+[sub_resource type="Animation" id="Animation_dpne1"]
+resource_name = "fade_to_game"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3abm5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nt7l"]
+_data = {
+"RESET": SubResource("Animation_3abm5"),
+"fade_to_game": SubResource("Animation_dpne1")
+}
+
+[node name="Opening" type="Node2D"]
+
+[node name="BlackRect" type="ColorRect" parent="."]
+offset_left = -13.0
+offset_top = 360.0
+offset_right = 1180.0
+offset_bottom = 641.0
+color = Color(0, 0, 0, 1)
+
+[node name="Rect" type="ColorRect" parent="."]
+offset_left = -52.0
+offset_top = -24.0
+offset_right = 1174.0
+offset_bottom = 704.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Rect")
+libraries = {
+"": SubResource("AnimationLibrary_4nt7l")
+}
+
+[node name="DialogueLabel" type="RichTextLabel" parent="."]
+offset_left = -2.0
+offset_top = 362.0
+offset_right = 1156.0
+offset_bottom = 647.0
+text = "Oh, No! The ropes are coming loose."
+script = ExtResource("1_h4gkn")

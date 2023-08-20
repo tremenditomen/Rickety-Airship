@@ -27,6 +27,9 @@ func stress_rope(ropeId):
 func _ready():
 	for rope in ropeDict:
 		add_child(ropeDict[rope].line)
+	ropeDict.rope6.set_stress(1)
+	await get_tree().create_timer(1).timeout
+	ropeDict.rope6.set_stress(2)
 
 
 func _on_rope_stress_timer_timeout():

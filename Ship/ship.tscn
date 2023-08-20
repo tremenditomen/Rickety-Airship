@@ -502,6 +502,7 @@ offset_left = -530.0
 offset_top = -151.0
 offset_right = 635.0
 offset_bottom = 506.0
+
 color = Color(0, 0, 0, 0)
 
 [node name="DialogueLabel" type="RichTextLabel" parent="DistanceBar2"]
