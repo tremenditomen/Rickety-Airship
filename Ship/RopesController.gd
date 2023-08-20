@@ -32,8 +32,9 @@ func stressed_ropes():
 	var broken_right = right_rope_ids.filter(func(ropeId): 
 		return ropeDict[ropeId].stress > 2)
 	return [broken_left, broken_right]
-
+	
 func _ready():
+	
 	for rope in ropeDict:
 		add_child(ropeDict[rope].line)
 	ropeDict.rope6.set_stress(1)
