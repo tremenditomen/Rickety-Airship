@@ -14,17 +14,17 @@ func _init(balloon_hook_init:Vector2, ship_hook_init:Vector2):
 	ship_hook = ship_hook_init
 	line.default_color = Color(0.4549, 0.247, 0.2235)
 	line.width = 2
-	stress = 2
+	stress = 0
 	_draw_simple_rope()
 
-func set_stress(stress):
-	stress = stress
+func set_stress(input_stress = false):
+	stress = input_stress
 	_draw_rope()
 
 func _draw_rope():
 	if stress == 0:
 		_draw_simple_rope()
-	elif stress == 1:
+	elif stress < 2:
 		_draw_curved_rope()
 	else:
 		_draw_loose_rope()
