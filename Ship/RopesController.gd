@@ -26,7 +26,7 @@ func _ready():
 		add_child(ropeDict[rope].line)
 
 
-func _on_rope_timer_timeout():
+func _on_rope_stress_timer_timeout():
 	rng.randomize()
 	var rngRope = "rope%s"
 	var randomNum = rngRope  %rng.randi_range(1,10)
