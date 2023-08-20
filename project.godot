@@ -47,6 +47,14 @@ locale/translations_pot_files=PackedStringArray("res://Dialogue/oh_no.dialogue",
 [layer_names]
 
 2d_physics/layer_1="FireActionable"
-2d_physics/layer_2="RopeActionable"
-2d_physics/layer_3="RightRopeActionable"
+2d_physics/layer_2="Rope1"
+2d_physics/layer_3="Rope2"
+2d_physics/layer_4="Rope3"
 2d_physics/layer_5="Actionables"
+2d_physics/layer_6="Rope4"
+2d_physics/layer_7="Rope5"
+2d_physics/layer_8="Rope6"
+2d_physics/layer_9="Rope7"
+2d_physics/layer_10="Rope8"
+2d_physics/layer_11="Rope9"
+2d_physics/layer_12="Rope10"
