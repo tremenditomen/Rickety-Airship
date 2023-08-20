@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=29 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://cypxaywnxhoj4" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="PackedScene" uid="uid://bx03qr2kqqmt8" path="res://sprite_actionable.tscn" id="1_iil3u"]
@@ -13,6 +13,9 @@ script/source = "extends Node2D
 
 
 var airship_speed = 15
+const MAX_ALTITUDE = 10
+var altitude = MAX_ALTITUDE
+@onready var node = get_node(\"AltitudeBar\")
 
 @onready var propeller = get_node(\"./Balloon/PropellerSprite\")
 @onready var fire_sprite = $Fire/FireSprite
@@ -21,10 +24,26 @@ var airship_speed = 15
 func _ready():
  propeller.play(\"default\", airship_speed)
  fire_sprite.hide()
+ $AltitudeBar.max_value = MAX_ALTITUDE
+ update_altitude()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 	#pass
+func update_altitude():
+ $AltitudeBar.value = altitude
+
+
+func _on_timer_timeout():
+ altitude -=.1
+ if altitude == 10:
+  node.fullAltitude()
+ elif altitude < 6 && altitude > 3:
+  node.midAltitude()
+ elif altitude < 3:
+  node.lowAltitude()
+
+ update_altitude()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p22yl"]
@@ -166,6 +185,43 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsr1m"]
+bg_color = Color(0.184314, 0.521569, 0.972549, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_fk8nw"]
+script/source = "extends ProgressBar
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func fullAltitude():
+	var sb = StyleBoxFlat.new()
+	add_theme_stylebox_override(\"fill\",sb)
+	sb.bg_color = Color(\"0262e0\")
+	sb.set_border_width_all(1)
+	sb.border_color = Color(\"000000\")
+func midAltitude():
+	var sb = StyleBoxFlat.new()
+	add_theme_stylebox_override(\"fill\", sb)
+	sb.bg_color = Color(\"c6c61b\")
+	sb.set_border_width_all(1)
+	sb.border_color = Color(\"000000\")
+func lowAltitude():
+	var sb = StyleBoxFlat.new()
+	add_theme_stylebox_override(\"fill\", sb)
+	sb.bg_color = Color(\"c90000\")
+	sb.set_border_width_all(1)
+	sb.border_color = Color(\"000000\")
+"
+
 [node name="Ship" type="Node2D"]
 script = SubResource("GDScript_m8yd1")
 
@@ -208,4 +264,31 @@ polygon = PackedVector2Array(-124, 57, 135, 57, 135, 52, 165, 52, 165, 55, 140, 
 [node name="RopesController" type="Node2D" parent="."]
 script = ExtResource("7_m8rgx")
 
+[node name="AltitudeBar" type="ProgressBar" parent="."]
+offset_left = -257.0
+offset_top = -16.0
+offset_right = -240.0
+offset_bottom = 162.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_jsr1m")
+max_value = 10.0
+step = 1.0
+fill_mode = 3
+show_percentage = false
+script = SubResource("GDScript_fk8nw")
+
+[node name="Timer" type="Timer" parent="AltitudeBar"]
+wait_time = 0.1
+autostart = true
+
+[node name="Label" type="Label" parent="AltitudeBar"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -27.0
+offset_right = 36.0
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "Altitude"
+
 [connection signal="timeout" from="Fire/FireTimer" to="Fire/SpriteActionable" method="_on_fire_timer_timeout"]
+[connection signal="timeout" from="AltitudeBar/Timer" to="." method="_on_timer_timeout"]
