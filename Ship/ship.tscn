@@ -23,8 +23,8 @@ func _ready():
  fire_sprite.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
- pass
+#func _process(delta):
+	#pass
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p22yl"]
