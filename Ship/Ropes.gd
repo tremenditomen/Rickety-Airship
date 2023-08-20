@@ -57,8 +57,6 @@ var ropeDict = {
 func _ready():
 	for rope in ropeDict:
 		ropeDict[rope].line = create_rope(ropeDict[rope])
-	
-	print("Ropes: ", ropeDict)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
