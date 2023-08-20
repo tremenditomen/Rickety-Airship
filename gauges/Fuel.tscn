@@ -1,9 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr3fsor4i32vc"]
+[gd_scene load_steps=4 format=3 uid="uid://ccjlnpfdbth81"]
 
-[ext_resource type="Script" path="res://Fuel.gd" id="1_c0gyw"]
-[ext_resource type="Script" path="res://FuelBar.gd" id="2_00wkh"]
+[sub_resource type="GDScript" id="GDScript_meg34"]
+script/source = "extends Node2D
+const MAX_FUEL = 10
+var fuel = MAX_FUEL
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scujq"]
+
+@onready var node = get_node(\"FuelBar\")
+func _ready() -> void:
+
+	$FuelBar.max_value = MAX_FUEL
+	set_fuel_bar ()
+
+func set_fuel_bar () -> void:
+	$FuelBar.value = fuel
+	
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\"):
+		damage()
+		
+
+func damage():
+	
+	fuel -=1
+	if fuel<0 || fuel == 10:
+		node.fullfuel()
+		fuel = MAX_FUEL
+	elif 	fuel<6 && fuel > 3:
+		node.midfuel()
+		print(\"we made it here\")
+	elif 	fuel<3:
+		node.lowfuel()
+
+
+	set_fuel_bar()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7441"]
 bg_color = Color(0.027451, 0.819608, 0.0156863, 1)
 border_width_left = 5
 border_width_top = 5
@@ -12,28 +47,55 @@ border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 border_blend = true
 
+[sub_resource type="GDScript" id="GDScript_uph12"]
+script/source = "extends ProgressBar
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func fullfuel():
+	var sb = StyleBoxFlat.new()
+	add_theme_stylebox_override(\"fill\",sb)
+	sb.bg_color = Color(\"07d104\")
+	sb.set_border_width_all(5)
+	sb.border_color = Color(\"000000\")
+func midfuel():
+	var sb = StyleBoxFlat.new()
+	add_theme_stylebox_override(\"fill\", sb)
+	sb.bg_color = Color(\"c6c61b\")
+	sb.set_border_width_all(5)
+	sb.border_color = Color(\"000000\")
+	
+func lowfuel():
+	var sb = StyleBoxFlat.new()
+	add_theme_stylebox_override(\"fill\", sb)
+	sb.bg_color = Color(\"c90000\")
+	sb.set_border_width_all(5)
+	sb.border_color = Color(\"000000\")
+	
+"
+
 [node name="Fuel" type="Node2D"]
-script = ExtResource("1_c0gyw")
+position = Vector2(169, -513)
+script = SubResource("GDScript_meg34")
 
 [node name="FuelBar" type="ProgressBar" parent="."]
-offset_left = 288.0
-offset_top = 190.0
-offset_right = 313.0
-offset_bottom = 590.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_scujq")
+offset_left = 88.0
+offset_top = 819.0
+offset_right = 674.0
+offset_bottom = 846.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_q7441")
 max_value = 10.0
-fill_mode = 3
-script = ExtResource("2_00wkh")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
+step = 1.0
+script = SubResource("GDScript_uph12")
 
 [node name="FuelLabel" type="Label" parent="."]
-offset_left = 196.0
-offset_top = 380.0
-offset_right = 268.0
-offset_bottom = 406.0
-text = "Distance:"
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+offset_left = 359.0
+offset_top = 793.0
+offset_right = 428.0
+offset_bottom = 854.0
+text = "Fuel:"

@@ -16,10 +16,10 @@ border_blend = true
 script = ExtResource("1_dqsch")
 
 [node name="Altitude" type="ProgressBar" parent="."]
-offset_left = -1.0
-offset_top = 33.0
-offset_right = 24.0
-offset_bottom = 433.0
+offset_left = 199.0
+offset_top = 117.0
+offset_right = 224.0
+offset_bottom = 517.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_e07ka")
 max_value = 10.0
 step = 1.0
@@ -28,9 +28,15 @@ show_percentage = false
 script = ExtResource("2_mlfcw")
 
 [node name="AltitudeLabel" type="Label" parent="."]
-offset_left = 33.0
-offset_top = 210.0
-offset_right = 108.0
-offset_bottom = 236.0
+offset_left = 173.0
+offset_top = 81.0
+offset_right = 248.0
+offset_bottom = 107.0
 text = "Altitude"
 uppercase = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
