@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://dys2j1umv5yu4"]
+[gd_scene load_steps=30 format=3 uid="uid://dys2j1umv5yu4"]
 
 [ext_resource type="Texture2D" uid="uid://cypxaywnxhoj4" path="res://Ship/Balloon.png" id="1_fodv7"]
 [ext_resource type="PackedScene" path="res://sprite_actionable.tscn" id="1_iil3u"]
 [ext_resource type="Texture2D" uid="uid://c560pt1asafdt" path="res://Ship/Propeller.png" id="2_qwa0p"]
 [ext_resource type="Texture2D" uid="uid://bfgsd5cq8xkjg" path="res://Ship/AirShip Body.png" id="3_hknwb"]
 [ext_resource type="Texture2D" uid="uid://cx1jiy0rdp1fl" path="res://Ship/AirShip Body Internal.png" id="4_8p31c"]
+[ext_resource type="Script" path="res://Ship/Ropes.gd" id="5_bcblm"]
 [ext_resource type="Texture2D" uid="uid://bfyeny5v05ugw" path="res://Ship/Ropes/Ropes Default.png" id="5_jaxv7"]
 [ext_resource type="Texture2D" uid="uid://ca6f0fyiqql3t" path="res://Ship/Fire/Fire Sprite.png" id="6_46jml"]
 
@@ -221,9 +222,11 @@ animation = &"external"
 polygon = PackedVector2Array(-124, 57, 135, 57, 135, 52, 165, 52, 165, 55, 140, 58, 121, 88, 99, 106, 66, 112, 14, 121, -27, 114, -95, 112, -99, 119, -121, 116, -126, 71, -131, 71, -147, 52, -124, 52)
 
 [node name="Ropes" type="Node2D" parent="."]
+script = ExtResource("5_bcblm")
 
 [node name="Default" type="AnimatedSprite2D" parent="Ropes"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_j83ra")
-frame_progress = 0.2959
+frame_progress = 0.163802
 
 [connection signal="timeout" from="Fire/FireTimer" to="Fire/SpriteActionable" method="_on_fire_timer_timeout"]
